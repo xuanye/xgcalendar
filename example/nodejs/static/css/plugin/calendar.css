@@ -194,7 +194,6 @@ border-bottom:2px solid #c3d9ff;
 	height:9px;
 	background-image:url(../../image/combined_v40_vr.png)
 }
-
 .chip {
 	position:absolute;
 	overflow:hidden;
@@ -242,21 +241,22 @@ border-bottom:2px solid #c3d9ff;
 }
 .cb1 {
 	height:1px;
-	margin:0;
+	margin:0 1px;
 	border-width:0 1px
 }
 .cb2 {
 	height:0;
-	margin:0;
+	margin:0 2px;
 	border-width:0 0 1px
 }
 .ct {
-	height:0px;
+	height:0;
 	overflow:hidden;
 	border-style:solid;
-	border-width:2px 0;
+	border-width:0 2px 2px;
 	border-color:transparent
 }
+
 .ie6 .ct {
 	border-style:solid dotted
 }
@@ -602,7 +602,7 @@ border-bottom:2px solid #c3d9ff;
 	border-color:#666 #ccc #ccc #666
 }
 .lk {
-	WHITE-SPACE: nowrap; COLOR: #112abb; CURSOR: hand; TEXT-DECORATION: underline
+	WHITE-SPACE: nowrap; COLOR: #112abb; CURSOR: pointer; TEXT-DECORATION: underline
 }
 .cal-control
 {

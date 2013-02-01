@@ -29,8 +29,11 @@
   "parameterinvalid":"参数%s 无效或格式不正确",
   "starttimegreatthanendtime":"结束时间必须大于开始时间",
   "successmsg":"操作成功!",
+  "loadingmsg":"正在加载...",
+  "processdatamsg":"正在处理你的请求...",
   "defaulterrormsg":"非常抱歉，无法加载您的活动，请稍后再试",
-
+  "dateparseformat":"yyyy-M-d", 
+  "datefullparseformat":"yyyy-M-d H:m",
   "dateformat":"YYYY-M-D",
   "datefullformat":"YYYY-M-D H:m"
 }

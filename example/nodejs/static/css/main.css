@@ -124,7 +124,37 @@ p.logo
 .calbtnp2
 {
    float: right;
-   width: 350px;
+   width: 300px;
+}
+.calbtnp2 .btngroup .btn
+{
+  float: left;
+  display: block;
+  width: 70px; 
+  min-width: 52px;    
+}
+.calbtnp3
+{
+  float: right;
+  width: 100px;
+}
+.calbtnp3 span
+{
+  float: left;
+  margin-right: 4px;
+}
+.calbtnp3 a
+{
+  color:#333;
+  float: left;
+  margin-right: 4px;
+}
+.calbtnp3 a:hover
+{
+  text-decoration: underline;
+}
+.calbtnp3 a:visited{
+  color:#333;
 }
 #leftpanel
 {
@@ -178,6 +208,19 @@ p.logo
   -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
   -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+}
+.bottom
+{
+  text-align: center;
+  margin-top: 10px;
+  color: #555;
+}
+.bottom a{
+  color: #555;
+}
+.bottom a:hover{
+  color: #333;
+  text-decoration: underline;
 }
 /**********button*****************/
 button

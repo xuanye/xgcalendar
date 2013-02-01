@@ -172,7 +172,7 @@
                         ctd.removeClass("bbit-dp-mp-sel");
                     }
                     $(td).addClass("bbit-dp-mp-sel");
-                    def.cm = parseInt($(td).attr("xmonth"));
+                    def.cm = parseInt($(td).attr("xmonth"),10);
                 }
             }
             if ($(td).hasClass("bbit-dp-mp-year")) {
@@ -182,7 +182,7 @@
                         ctd.removeClass("bbit-dp-mp-sel");
                     }
                     $(td).addClass("bbit-dp-mp-sel");
-                    def.cy = parseInt($(td).attr("xyear"));
+                    def.cy = parseInt($(td).attr("xyear"),10);
                 }
             }
             return false;
@@ -234,9 +234,8 @@
             }
             var $td = $(td);
             if (!$(td).hasClass("bbit-dp-disabled")) {
-                var s = $td.attr("xdate");
-                var arrs = s.split("-");
-                var d = new Date(arrs[0], parseInt(arrs[1], 10) - 1, arrs[2]);
+                var s = $td.attr("xdate");              
+                var d = stringtodate(s);
                 if (def.showtime) {
                     var timevalue = $("#BBIT-DP-TIME").val();
                     if (!/\d{2}:\d{2}/.test(timevalue)) {
@@ -259,9 +258,9 @@
             try
             {
                 var arrs = datestr.split(i18n.datepicker.dateformat.separator);
-                var year = parseInt(arrs[i18n.datepicker.dateformat.year_index]);
-                var month = parseInt(arrs[i18n.datepicker.dateformat.month_index]) - 1;
-                var day = parseInt(arrs[i18n.datepicker.dateformat.day_index]);
+                var year = parseInt(arrs[i18n.datepicker.dateformat.year_index],10);
+                var month = parseInt(arrs[i18n.datepicker.dateformat.month_index],10) - 1;
+                var day = parseInt(arrs[i18n.datepicker.dateformat.day_index],10);
                 return new Date(year, month, day);
             }
             catch(e)
@@ -357,15 +356,15 @@
                 return;
             }
             if (re && jQuery.isFunction(re)) {
-                re.call(ct[0], cp.data("indata"));
+                re.call(ct[0], ndate);
             }
-            else {              
+            else { 
                 var formart =  i18n.datepicker.dateformat.fulldayvalue ;
                 if(def.showtime)
                 {
                   formart +=" HH:mm";
                 }
-                ct.val(cp.data("indata").Format(formart));
+                ct.val(ndate.Format(formart));
             }
             ck.attr("isshow", "0");
             cp.removeData("ctarget").removeData("cpk").removeData("indata").removeData("onReturn")
@@ -484,7 +483,7 @@
                         def.inputDate = v;
                     }
 
-                }
+                }               
                 cp.data("ctarget", obj).data("cpk", me).data("indata", def.inputDate).data("onReturn", def.onReturn);
                 cp.trigger("resetdefdate");
                 if (def.applyrule && $.isFunction(def.applyrule)) {

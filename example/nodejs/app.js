@@ -20,12 +20,12 @@ i18n.configure({
     register: global,
     updateFiles: false
 });
-i18n.setLocale('en-us');
+//i18n.setLocale('en-us');
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
   app.set('view engine', 'jade');
-  app.use(express.favicon());
+  app.use(express.favicon(__dirname +"/favicon.ico"));
   app.use(express.logger('dev'));
   app.use(express.bodyParser());
   app.use(expressValidator);

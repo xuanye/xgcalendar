@@ -6,6 +6,8 @@ block headcontent
 block content
   #mainpanel
     #toppanel
+      div#loadingpannel
+      div#errorpannel #{__("defaulterrormsg")}
       p.logo=__("title")
       div.calbtnp1 
         button#todaybtn.btn(type='button')=__("today")
@@ -15,6 +17,11 @@ block content
           span#nextbtn.btn.nextbtn(type='button') 
             em
         div#dateshow 
+      div.calbtnp3 
+        div
+          a#langch(href='/calendar/?lang=zh-cn') 中文
+          span |
+          a#langen(href='/calendar/?lang=en-us') English
       div.calbtnp2 
         div#viewswithbtn.btngroup
           button#daybtn.btn(type='button') #{__("day")}
@@ -26,11 +33,16 @@ block content
       #minical.minical 
     #rightpanel
       #xgcalendarp 
+      div.bottom demo base on 
+       a(target='_blank',href='https://github.com/xuanye/xgcalendar') xgcalendar
 block jscontent
   script(type="text/javascript",src='/js/locales/#{__("langcode")}.js')
   script(type="text/javascript",src='/js/sea.js')
   script(type='text/javascript',src='/js/seaconfig.js')
   script(type='text/javascript')
+      var loadingmsg = '#{__("loadingmsg")}'; 
+      var sucessmsg = '#{__("successmsg")}'; 
+      var processdatamsg = '#{__("processdatamsg")}';       
       seajs.use('page/index', function(app) {
             app.init();
         });

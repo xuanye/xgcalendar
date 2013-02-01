@@ -30,9 +30,13 @@
   "defaultsubject":"Untitled event",
   "parameterinvalid":"Parameter %s invalid",
   "starttimegreatthanendtime":"Start time can not be greater than the end time",
-  "successmsg":"Success!",
-  "defaulterrormsg":"Sorry, could not load your data, please try again later",
+  "successmsg":"Success!",  
+  "loadingmsg":"Loading data...",
+  "processdatamsg":"The request is being processed ...",
 
+  "defaulterrormsg":"Sorry, could not load your data, please try again later",
+  "dateparseformat":"M/d/yyyy", 
+  "datefullparseformat":"yyyy-M-d H:m",
   "dateformat":"M/D/YYYY",
   "datefullformat":"M/D/YYYY H:m"
 }

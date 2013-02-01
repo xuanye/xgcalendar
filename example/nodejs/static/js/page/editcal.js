@@ -78,8 +78,8 @@ define(function(require, exports, module) {
     {  
        var v = this.value.split(":");
        if(v.length ==2)
-       {  
-          var hour = parseInt(v[0]);       
+       {           
+          var hour = parseInt(v[0],10);       
           var th = hour * 25 * 2; //当前值选项的位置
           var ch = panel[0].clientHeight; //整个的高度
           var sh = th - 0.5 * ch; // 滚到中间
@@ -103,14 +103,10 @@ define(function(require, exports, module) {
     function formvalidate()
     {
        $.validator.addMethod("date", function(value, element) {                             
-            //var arrs = value.split(i18n.datepicker.dateformat.separator);
-            //var year = arrs[i18n.datepicker.dateformat.year_index];
-            //var month = arrs[i18n.datepicker.dateformat.month_index];
-            //var day = arrs[i18n.datepicker.dateformat.day_index];
-            var arrs = value.split("-");
-            var year = arrs[0];
-            var month = arrs[1];
-            var day = arrs[2];
+            var arrs = value.split(i18n.datepicker.dateformat.separator);
+            var year = arrs[i18n.datepicker.dateformat.year_index];
+            var month = arrs[i18n.datepicker.dateformat.month_index];
+            var day = arrs[i18n.datepicker.dateformat.day_index];          
             var standvalue = [year,month,day].join("-");
             return this.optional(element) || /^(?:(?:1[6-9]|[2-9]\d)?\d{2}[\/\-\.](?:0?[1,3-9]|1[0-2])[\/\-\.](?:29|30))(?: (?:0?\d|1\d|2[0-3])\:(?:0?\d|[1-5]\d)\:(?:0?\d|[1-5]\d)(?: \d{1,3})?)?$|^(?:(?:1[6-9]|[2-9]\d)?\d{2}[\/\-\.](?:0?[1,3,5,7,8]|1[02])[\/\-\.]31)(?: (?:0?\d|1\d|2[0-3])\:(?:0?\d|[1-5]\d)\:(?:0?\d|[1-5]\d)(?: \d{1,3})?)?$|^(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])[\/\-\.]0?2[\/\-\.]29)(?: (?:0?\d|1\d|2[0-3])\:(?:0?\d|[1-5]\d)\:(?:0?\d|[1-5]\d)(?: \d{1,3})?)?$|^(?:(?:16|[2468][048]|[3579][26])00[\/\-\.]0?2[\/\-\.]29)(?: (?:0?\d|1\d|2[0-3])\:(?:0?\d|[1-5]\d)\:(?:0?\d|[1-5]\d)(?: \d{1,3})?)?$|^(?:(?:1[6-9]|[2-9]\d)?\d{2}[\/\-\.](?:0?[1-9]|1[0-2])[\/\-\.](?:0?[1-9]|1\d|2[0-8]))(?: (?:0?\d|1\d|2[0-3])\:(?:0?\d|[1-5]\d)\:(?:0?\d|[1-5]\d)(?:\d{1,3})?)?$/.test(standvalue);
        }, "日期格式不正确");
@@ -124,7 +120,7 @@ define(function(require, exports, module) {
             beforeSubmit: function () {               
             },
             dataType: "json",
-            success: function (data) {
+            success: function (data) {              
                 if (data.IsSuccess) {
                     CloseModalDialog(null,true);
                 }
@@ -161,7 +157,7 @@ define(function(require, exports, module) {
     //init color select
     function initcolor(len)
     {      
-      var defTheme = parseInt($("#tbCategory").val());
+      var defTheme = parseInt($("#tbCategory").val(),10);
       //alert(defTheme);
       var colors  = [];
       var borders = [];

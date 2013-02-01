@@ -85,7 +85,7 @@ exports.addCalendar = function(calendar,cb,errcb){
         "(:Subject,:Location,:MasterId,:Description,:CalendarType,:StartTime,:EndTime"+
         ",:IsAllDayEvent,:HasAttachment,:Category,:InstanceType,:Attendees,:AttendeeNames"+
         ",:OtherAttendee,:UPAccount,:UPName,:UPTime,:RecurringRule) "
-    var q=db.query(sql,calendar,function(err,result){
+    db.query(sql,calendar,function(err,result){
         db.end();
         if(err)
         {
@@ -101,13 +101,13 @@ exports.addCalendar = function(calendar,cb,errcb){
             cb(result.insertId);
         }
     });
-    console.log(q.sql);
+    //console.log(q.sql);
 }
-exports.UpdateCalendar = function(id,calendar,cb,errcb){
+exports.UpdateCalendar = function(id,userid,calendar,cb,errcb){
     var db = GetConnection();
     db.connect();
-    var sql = "UPDATE `calendar` SET ? WHERE Id="+id;
-    var q = db.query(sql,calendar,function(err,result){
+    var sql = "UPDATE `calendar` SET ? WHERE Id="+id+" and UPAccount='"+userid+"'";
+    db.query(sql,calendar,function(err,result){
         db.end();
         if(err)
         {
@@ -124,12 +124,12 @@ exports.UpdateCalendar = function(id,calendar,cb,errcb){
             cb(affectedRows);
         }
     });
-    console.log(q.sql);
+    //console.log(q.sql);
 }
-exports.DeleteCalendar =  function(id,cb,errcb){
+exports.DeleteCalendar =  function(id,userid,cb,errcb){
     var db = GetConnection();
     db.connect();
-    var sql = "DELETE FROM `calendar` WHERE Id="+id;
+    var sql = "DELETE FROM `calendar` WHERE Id="+id+" and UPAccount='"+userid+"'";
     db.query(sql,function(err,result){
         db.end();
         if(err)

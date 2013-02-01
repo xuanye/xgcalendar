@@ -24,13 +24,13 @@ define(function(require, exports, module) { //参数名字不能改
         quickUpdateUrl: "/calendar/update" ,  
         quickDeleteUrl:  "/calendar/delete" //快速删除日程的
         /* timeFormat:" hh:mm t", //t表示上午下午标识,h 表示12小时制的小时，H表示24小时制的小时,m表示分钟
-        tgtimeFormat:"ht" //同上 */             
+        tgtimeFormat:"ht" //同上 */ 
     };
     var _MH = document.documentElement.clientHeight;
-    op.height = _MH-70;
+    op.height = _MH-90;
     op.eventItems =[];
     var p = $("#xgcalendarp").bcalendar(op).BcalGetOp();
-    if (p && p.datestrshow) {
+    if (p && p.datestrshow) {       
         $("#dateshow").text(p.datestrshow);
     }
     $("#addcalbtn").click(function(){
@@ -83,13 +83,40 @@ define(function(require, exports, module) { //参数名字不能改
         }
     }
     function cal_beforerequest(type)
-    {              
+    {          
+        var t=loadingmsg;
+        switch(type)
+        {
+            case 1:
+                t=loadingmsg;
+                break;
+            case 2:                      
+            case 3:  
+            case 4:    
+                t=processdatamsg;                                   
+                break;
+        }
+        $("#errorpannel").hide();
+        $("#loadingpannel").html(t).show();        
     }
     function cal_afterrequest(type)
     {         
+        switch(type)
+        {
+            case 1:
+                $("#loadingpannel").hide();
+                break;
+            case 2:
+            case 3:
+            case 4:
+                $("#loadingpannel").html(sucessmsg);
+                window.setTimeout(function(){ $("#loadingpannel").hide();},2000);
+            break;
+        }              
     }
     function cal_onerror(type,data)
-    {    
+    {   
+      $("#errorpannel").show(); 
     }
     function edit(data)
     { 

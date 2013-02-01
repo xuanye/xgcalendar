@@ -51,7 +51,7 @@ define(function(require, exports, module) { //参数名字不能改
             $(this).addClass("minical-current").blur();    
             var idate = $(this).attr("xdate");
             var date = idate.split(/\D/);
-            me.__option.currentDate= new Date(date[0],parseInt(date[1])-1,date[2]);          
+            me.__option.currentDate= new Date(date[0],parseInt(date[1],10)-1,date[2]);          
             if(me.__option.onchange)
             {
                me.__option.onchange.call(me,me.__option.currentDate);

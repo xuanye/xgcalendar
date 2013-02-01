@@ -8,6 +8,15 @@ var TIMEZONE_INDEX = new Date().getTimezoneOffset()/60 * -1;
 
 exports.index = function(req,res){   
     //console.log(i18n.getLocale());
+    var lang = req.query.lang;
+    if(lang=='zh-cn')
+    {
+       i18n.setLocale('zh-cn');
+    }
+    else
+    {
+       i18n.setLocale('en-us');
+    }
     res.render('index',{title:__('title')});   
 }
 
@@ -19,8 +28,8 @@ exports.query = function(req,res) {
     var clientzone = req.body.timezone;
     var serverzone = TIMEZONE_INDEX;
     var zonediff   = serverzone-clientzone ; 
-    var showdaytimp  = Date.parse(strshowday,"y-M-d");//__("dateformat"));//TODO：日期格式  
-    if(showdaytimp == NaN)
+    var showdaytimp  = Date.parse(strshowday,__("dateparseformat"));//__("dateformat"));//TODO：日期格式  
+    if( isNaN(showdaytimp) )
     {
         ret.error = {"ErrorCode":"NotVolidDateTimeFormat","ErrorMsg":__("notvoliddatetimeformat")};
         res.json(ret);
@@ -37,7 +46,7 @@ exports.query = function(req,res) {
         ret.end         = util.format("\/Date(%d)\/",dataformart.end.getTime());
         ret.error       = null;
         ret.issort      = true;      
-        calendardao.QueryCalendar(qstart,qend,'127.0.0.1',zonediff,function(dbdata){
+        calendardao.QueryCalendar(qstart,qend,'demo',zonediff,function(dbdata){
            ret.events = [];
            for(var i=0,l=dbdata.length;i<l;i++)
             {         
@@ -84,11 +93,14 @@ exports.editview  = function(req,res){
   if(id>0)
   {
      //修改
-      calendardao.GetCalendar(id,'127.0.0.1',function(dbdata){
+      calendardao.GetCalendar(id,'demo',function(dbdata){
          if(dbdata && dbdata.length>0)
          {
             eventdata = dbdata[0];
             eventdata.IsAllDayEvent = eventdata.IsAllDayEvent[0]==1;
+            var diffzone = eventdata.MasterId-TIMEZONE_INDEX;
+            eventdata.StartTime.addHours(diffzone);
+            eventdata.EndTime.addHours(diffzone);
             eventdata.startdate = eventdata.StartTime.toFormat(__("dateformat"));
             eventdata.starttime = eventdata.StartTime.toFormat("HH24:MI");
             eventdata.enddate   = eventdata.EndTime.toFormat(__("dateformat"));
@@ -110,11 +122,11 @@ exports.editview  = function(req,res){
     eventdata.Id = id;
     if(req.query.start)
     {
-      eventdata.StartTime = new Date(Date.parse(req.query.start,__("datefullformat"))); //new Date(req.query.start);
+      eventdata.StartTime = new Date(Date.parse(req.query.start,__("datefullparseformat"))); //new Date(req.query.start);
     }
     if(req.query.end)
     {
-      eventdata.EndTime = new Date(Date.parse(req.query.end,__("datefullformat"))); //new Date(req.query.end);
+      eventdata.EndTime = new Date(Date.parse(req.query.end,__("datefullparseformat"))); //new Date(req.query.end);
     }
     if(req.query.title)
     {
@@ -152,17 +164,21 @@ exports.save = function(req,res){
   req.assert('Category', __("parameterinvalid","Category")).isInt();
   req.assert('TimeZone', __("parameterinvalid","TimeZone")).isInt(); 
 
-  var starttimetimp = Date.parse(strStartDate +' '+strStartTime,__("datefullformat"));
-  var endtimetimp = Date.parse(strEndDate +' '+strEndTime,__("datefullformat"));
+  var strStartDate = req.body.StartDate;
+  var strStartTime = req.body.StartTime;
+  var strEndDate = req.body.EndDate;
+  var strEndTime = req.body.EndTime;
+  var starttimetimp = Date.parse(strStartDate +' '+strStartTime,__("datefullparseformat"));
+  var endtimetimp = Date.parse(strEndDate +' '+strEndTime,__("datefullparseformat"));
 
-  if(starttimetimp == NaN)
+  if(isNaN(starttimetimp))
   {
     ret.IsSuccess = false;
     ret.Msg       = __("parameterinvalid","StartTime");
     res.json(ret);
     return;
   }
-  if(endtimetimp == NaN)
+  if(isNaN(endtimetimp))
   {
    ret.IsSuccess = false;
     ret.Msg       =  __("parameterinvalid","EndTime");
@@ -230,8 +246,8 @@ exports.save = function(req,res){
 
   data.HasAttachment = false;  
   data.InstanceType  = 0;
-  data.UPAccount     = '127.0.0.1';
-  data.UPName        = '管理员';
+  data.UPAccount     = 'demo';
+  data.UPName        = 'demo';
   data.UPTime        = new Date();
   //data.Attendees     = "刘德华,关之琳";
   //data.Location      = '宝芝林';
@@ -239,7 +255,7 @@ exports.save = function(req,res){
   
   if(id && id >0)
   {
-    calendardao.UpdateCalendar(id,data,function(rcount){
+    calendardao.UpdateCalendar(id,'demo',data,function(rcount){
           if(rcount>0)
           {
             ret.IsSuccess = true;
@@ -291,17 +307,17 @@ exports.add = function(req,res){
     var zonediff      = serverzone-clientzone ; 
     
     data.CalendarType = 1;
-    var starttimp    = Date.parse(strStartTime,__("datefullformat"));//new Date(strStartTime);
-    var endtimp      = Date.parse(strEndTime,__("datefullformat"));
+    var starttimp    = Date.parse(strStartTime,__("datefullparseformat"));//new Date(strStartTime);
+    var endtimp      = Date.parse(strEndTime,__("datefullparseformat"));
 
-    if(starttimp == NaN)
+    if( isNaN(starttimp)) 
     {
       ret.IsSuccess = false;
       ret.Msg       = __("parameterinvalid","StartTime");
       res.json(ret);
       return;
     }
-    if(endtimp == NaN)
+    if( isNaN(endtimp) )
     {
       ret.IsSuccess = false;
       ret.Msg       = __("parameterinvalid","EndTime"); 
@@ -316,10 +332,10 @@ exports.add = function(req,res){
     
     data.IsAllDayEvent = isallday=="1";
     data.HasAttachment = false;
-    data.Category      = "0";
+    data.Category      = "1";
     data.InstanceType  = 0;
-    data.UPAccount     = '127.0.0.1';
-    data.UPName        = '管理员';
+    data.UPAccount     = 'demo';
+    data.UPName        = 'demo';
     data.UPTime        = new Date();
     //data.Attendees     = "刘德华,关之琳";
     //data.Location      = '宝芝林';
@@ -357,17 +373,17 @@ exports.update =function(req,res){
     }
     var strStartTime = req.body.CalendarStartTime;
     var strEndTime  = req.body.CalendarEndTime;
-    var starttimp    = Date.parse(strStartTime,__("datefullformat"));//new Date(strStartTime);
-    var endtimp      = Date.parse(strEndTime,__("datefullformat"));
+    var starttimp    = Date.parse(strStartTime,__("datefullparseformat"));//new Date(strStartTime);
+    var endtimp      = Date.parse(strEndTime,__("datefullparseformat"));
 
-    if(starttimp == NaN)
+    if( isNaN(starttimp))
     {
       ret.IsSuccess = false;
       ret.Msg       = __("parameterinvalid","StartTime");
       res.json(ret);
       return;
     }
-    if(endtimp == NaN)
+    if( isNaN(endtimp))
     {
       ret.IsSuccess = false;
       ret.Msg       = __("parameterinvalid","EndTime"); 
@@ -384,7 +400,7 @@ exports.update =function(req,res){
     data.StartTime.addHours(zonediff);
     data.EndTime.addHours(zonediff);
 
-    calendardao.UpdateCalendar(id,data,function(rcount){
+    calendardao.UpdateCalendar(id,'demo',data,function(rcount){
         if(rcount>0)
         {
           ret.IsSuccess = true;
@@ -413,7 +429,7 @@ exports.delete =function(req,res){
       res.json(ret);
       return;
     }
-    calendardao.DeleteCalendar(id,function(rcount){
+    calendardao.DeleteCalendar(id,'demo',function(rcount){
         if(rcount>0)
         {
           ret.IsSuccess = true;
