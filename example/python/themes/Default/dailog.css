@@ -1,0 +1,281 @@
+﻿.bbit-window {
+    zoom:1;
+    display:block;
+    z-index:999;
+    position:absolute;
+    left:0px;
+    top:0px;
+}
+
+.bbit-window .bbit-resizable-handle {
+    opacity:0;
+    -moz-opacity:0;
+    filter:alpha(opacity=0);
+}
+  
+.bbit-window-proxy {
+    border:1px solid;
+    z-index:12000;
+    overflow:hidden;
+    position:absolute;
+    left:0;top:0;
+    display:none;
+    opacity:.5;
+    -moz-opacity:.5;
+    filter:alpha(opacity=50);
+}
+
+.bbit-window-header {
+    overflow:hidden;
+    zoom:1;
+}
+
+.bbit-window-bwrap {
+    z-index:1;
+    position:relative;
+    zoom:1;
+    left:0;top:0;
+}
+
+.bbit-window-tl .bbit-window-header {
+    padding:5px 0 4px 0;
+}
+
+.bbit-window-header-text {
+  background:url('images/dailog/app-form.png') no-repeat 3px center ; 
+  padding-left:20px; 
+  font-weight:bold;
+  color:#15428b;
+}
+
+
+.bbit-window-tc {
+	background: transparent repeat-x 0 0;
+	overflow:hidden;
+    zoom:1;
+}
+
+.bbit-window-tl {
+	background: transparent no-repeat 0 0;
+	padding-left:6px;
+    zoom:1;
+    z-index:1;
+    position:relative;
+}
+
+.bbit-window-tr {
+	background: transparent no-repeat right 0;
+	padding-right:6px;
+}
+
+.bbit-window-bc {
+	background: transparent repeat-x 0 bottom;
+    zoom:1;
+}
+
+.bbit-window-bc .bbit-window-footer {
+    padding-bottom:6px;
+    zoom:1;
+    font-size:0;
+    line-height:0;
+}
+
+.bbit-window-bl {
+	background: transparent no-repeat 0 bottom;
+	padding-left:6px;
+    zoom:1;
+}
+
+.bbit-window-br {
+	background: transparent no-repeat right bottom;
+	padding-right:6px;
+    zoom:1;
+}
+
+.bbit-window-mc {
+    border:1px solid;
+    padding:0;
+    margin:0;
+}
+
+.bbit-window-ml {
+	background: transparent repeat-y 0 0;
+	padding-left:6px;
+    zoom:1;
+}
+
+.bbit-window-mr {
+	background: transparent repeat-y right 0;
+	padding-right:6px;
+    zoom:1;
+}
+
+.bbit-window-body {
+    overflow:hidden;
+    
+}
+
+.bbit-window-bwrap {
+    overflow:hidden;
+}
+
+.bbit-window-maximized .bbit-window-bl, .bbit-window-maximized .bbit-window-br,
+    .bbit-window-maximized .bbit-window-ml, .bbit-window-maximized .bbit-window-mr,
+    .bbit-window-maximized .bbit-window-tl, .bbit-window-maximized .bbit-window-tr {
+    padding:0;
+}
+
+.bbit-window-maximized .bbit-window-footer {
+    padding-bottom:0;
+}
+
+.bbit-window-maximized .bbit-window-tc {
+    padding-left:3px;
+    padding-right:3px;
+}
+
+.bbit-window-maximized .bbit-window-mc {
+    border-left:0 none;
+    border-right:0 none;
+}
+
+.bbit-window-tbar .bbit-toolbar, .bbit-window-bbar .bbit-toolbar {
+    border-left:0 none;
+    border-right: 0 none;
+}
+
+.bbit-window-bbar .bbit-toolbar {
+    border-top:1px solid;
+    border-bottom:0 none;
+}
+
+.bbit-window-draggable, .bbit-window-draggable .bbit-window-header-text {
+    cursor:move;
+}
+
+.bbit-window-maximized .bbit-window-draggable, .bbit-window-maximized .bbit-window-draggable .bbit-window-header-text {
+    cursor:default;
+}
+
+.bbit-window-body {
+    background:transparent;
+}
+
+.bbit-panel-ghost .bbit-window-tl {
+    border-bottom:1px solid;
+}
+
+.bbit-panel-collapsed .bbit-window-tl {
+    border-bottom:1px solid;
+}
+
+.bbit-window-maximized-ct {
+    overflow:hidden;
+}
+
+.bbit-window-maximized .bbit-resizable-handle {
+    display:none;
+}
+
+.bbit-window-sizing-ghost ul {
+    border:0 none !important;
+}
+
+.bbit-dlg-focus{
+	-moz-outline:0 none;
+	outline:0 none;
+	width:0;
+	height:0;
+	overflow:hidden;
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+.ext-webkit .bbit-dlg-focus{
+    width: 1px;
+    height: 1px;
+}
+
+.bbit-dlg-mask{
+    z-index:10000;
+    display:none;
+    position:absolute;
+    top:0;
+    left:0;
+    -moz-opacity: 0.5;
+    opacity:.50;
+    filter: alpha(opacity=50);
+}
+
+body.ie6.bbit-body-masked select {
+	visibility:hidden;
+}
+
+body.ext-ie6.bbit-body-masked .bbit-window select {
+	visibility:visible;
+}
+
+.bbit-window-plain .bbit-window-mc {
+    border:none;
+}
+
+.bbit-window-plain .bbit-window-body {
+    border:solid 1px #a3bae9;
+    background:transparent !important;
+}
+
+.bbit-window-tc {
+	background-image: url(images/dailog/top-bottom.png);
+}
+
+.bbit-window-tl {
+	background-image: url(images/dailog/left-corners.png);
+}
+
+.bbit-window-tr {
+	background-image: url(images/dailog/right-corners.png);
+}
+
+.bbit-window-bc {
+	background-image: url(images/dailog/top-bottom.png);
+}
+
+.bbit-window-bl {
+	background-image: url(images/dailog/left-corners.png);
+}
+
+.bbit-window-br {
+	background-image: url(images/dailog/right-corners.png);
+}
+
+.bbit-window-mc {
+    border-color:#99bbe8;
+    font: normal 11px tahoma,arial,helvetica,sans-serif;
+    background-color:#c6d4e4;
+}
+
+.bbit-window-ml {
+	background-image: url(images/dailog/left-right.png);
+}
+
+.bbit-window-mr {
+	background-image: url(images/dailog/left-right.png);
+}
+div.bbit-tool
+{
+    font-size:1px;
+    background: url("images/dailog/tool-sprites.gif") no-repeat;
+}
+div.bbit-tool-close
+{
+    cursor:pointer;
+ float:right;
+ width:15px;
+ height:15px;   
+  background-position: 0px 0px;
+}
+div.hover.bbit-tool-close
+{
+   background-position: -15px 0px;
+}

@@ -1,0 +1,106 @@
+﻿#popup_container {
+	font-family: Arial, sans-serif;
+	font-size: 12px;
+	min-width: 300px; /* Dialog will be no smaller than this */
+	_width:320px; 
+	max-width: 600px; /* Dialog will wrap after this width */
+	background: #fff;
+	border: solid 1px #777;
+	color: #000;
+}
+
+
+/*corner style*/
+#ctl, #cbl, #ctr, #cbr { 
+position:absolute; width:5px; height:5px;  
+overflow:hidden; font-style:normal; z-index:99999;
+background:#fff url(images/alert/corners.gif) no-repeat ;}
+#ctl {top:-1px; left:-1px;background-position:0 0;background-color:#dae7f6;}
+#ctr {top:-1px; right:-1px;background-position:-5px 0;background-color:#dae7f6;}
+#cbl {bottom:-1px; left:-1px;background-position:0 -5px;}
+#cbr {bottom:-1px; right:-1px;background-position:-5px -5px;}
+/*corner style over*/
+
+
+#popup_title {
+	font-size: 12px;
+	font-weight: bold;
+	text-align:left;
+	line-height: 1.9em;
+	color: #333;
+	background:url(images/alert/title.gif) repeat-x 0px -2px;
+	border-bottom: solid 1px #777;
+	cursor: default;
+	padding:0 0 0 8px;
+	margin: 0em;
+}
+#popup_close{
+position:absolute;
+right:7px;top:4px;
+width:15px;height:15px;
+background:url(images/alert/close.gif) no-repeat ;
+cursor:hand;
+cursor:pointer;}
+#popup_close:hover
+{
+    -moz-opacity:0.8;
+    opacity:0.8;
+    filter:alpha(opacity=80);
+}
+
+#popup_content {
+	background: 16px 16px no-repeat;
+	padding: 12px;
+	margin: 0em;
+}
+
+#popup_container .alert {
+	background-image: url(images/alert/info.gif);
+}
+
+#popup_container .confirm {
+	background-image: url(images/alert/important.gif);
+}
+
+#popup_container .prompt {
+	background-image: url(images/alert/help.gif);
+}
+
+#popup_message {
+	padding-left: 48px;
+}
+
+#popup_panel {
+	text-align: center;
+	margin: 1em 0em 0em 1em;
+}
+
+#popup_ok,#popup_cancel{
+width:55px;height:20px;
+text-align:center;
+border:none;
+background:url(images/alert/bot.gif) no-repeat ;
+font-size:12px;
+line-height:20px;
+padding:0; }
+
+#popup_prompt {
+	margin: .5em 0em;
+}
+
+#popup_content.openBox{padding:12px;background:none; }
+.openBox #popup_message{padding:0;overflow:auto;}
+
+#over_container{
+min-width: 300px; /* Dialog will be no smaller than this */
+background:#DDEDFB;
+border:1px solid #0099CC;
+color: #000;
+}
+#over_message{
+text-align:center; 
+padding:5px 20px;}
+
+#over_container.over_3{
+background:#FFF2F2;
+border:1px solid #FF8080;}

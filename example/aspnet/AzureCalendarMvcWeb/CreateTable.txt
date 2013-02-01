@@ -1,0 +1,143 @@
+﻿if exists (select 1
+            from  sysobjects
+           where  id = object_id('dbo.Calendars')
+            and   type = 'U')
+   drop table dbo.Calendars
+go
+
+/*==============================================================*/
+/* Table: Calendars                                             */
+/*==============================================================*/
+create table dbo.Calendars (
+   Id                   int                  identity(1, 1),
+   Subject              nvarchar(1000)       collate Chinese_PRC_CI_AS null,
+   Location             nvarchar(200)        collate Chinese_PRC_CI_AS null,
+   MasterId             int                  null,
+   Description          nvarchar(255)        collate Chinese_PRC_CI_AS null,
+   CalendarType         int                  not null
+      constraint CKC_CALENDARTYPE_CALENDAR check (CalendarType in (1,2)),
+   StartTime            datetime             not null,
+   EndTime              datetime             not null,
+   IsAllDayEvent        bit                  not null,
+   HasAttachment        bit                  not null,
+   Category             nvarchar(200)        null,
+   InstanceType         int                  not null
+      constraint CKC_INSTANCETYPE_CALENDAR check (InstanceType in (0,1,2,3,4)),
+   Attendees            nvarchar(255)        collate Chinese_PRC_CI_AS null,
+   AttendeeNames        nvarchar(255)        collate Chinese_PRC_CI_AS null,
+   OtherAttendee        nvarchar(255)        collate Chinese_PRC_CI_AS null,
+   UPAccount            nvarchar(50)         collate Chinese_PRC_CI_AS not null,
+   UPName               nvarchar(50)         collate Chinese_PRC_CI_AS not null,
+   UPTime               datetime             not null,
+   RecurringRule        nvarchar(500)        null,
+   constraint PK_Calendar primary key (Id)
+)
+go
+
+execute sp_addextendedproperty 'MS_Description', 
+   '日程表',
+   'user', 'dbo', 'table', 'Calendars'
+go
+
+execute sp_addextendedproperty 'MS_Description', 
+   '主键标识自增',
+   'user', 'dbo', 'table', 'Calendars', 'column', 'Id'
+go
+
+execute sp_addextendedproperty 'MS_Description', 
+   '标题',
+   'user', 'dbo', 'table', 'Calendars', 'column', 'Subject'
+go
+
+execute sp_addextendedproperty 'MS_Description', 
+   '地点',
+   'user', 'dbo', 'table', 'Calendars', 'column', 'Location'
+go
+
+execute sp_addextendedproperty 'MS_Description', 
+   '循环主日程Id',
+   'user', 'dbo', 'table', 'Calendars', 'column', 'MasterId'
+go
+
+execute sp_addextendedproperty 'MS_Description', 
+   '描述',
+   'user', 'dbo', 'table', 'Calendars', 'column', 'Description'
+go
+
+execute sp_addextendedproperty 'MS_Description', 
+   '日程的类型
+   1	UserCalendar（个人日程）
+   2	DeptCalendar（部门日程）
+   ',
+   'user', 'dbo', 'table', 'Calendars', 'column', 'CalendarType'
+go
+
+execute sp_addextendedproperty 'MS_Description', 
+   '开始时间',
+   'user', 'dbo', 'table', 'Calendars', 'column', 'StartTime'
+go
+
+execute sp_addextendedproperty 'MS_Description', 
+   '结束时间',
+   'user', 'dbo', 'table', 'Calendars', 'column', 'EndTime'
+go
+
+execute sp_addextendedproperty 'MS_Description', 
+   '是否全天日程',
+   'user', 'dbo', 'table', 'Calendars', 'column', 'IsAllDayEvent'
+go
+
+execute sp_addextendedproperty 'MS_Description', 
+   '是否有附件',
+   'user', 'dbo', 'table', 'Calendars', 'column', 'HasAttachment'
+go
+
+execute sp_addextendedproperty 'MS_Description', 
+   '类别',
+   'user', 'dbo', 'table', 'Calendars', 'column', 'Category'
+go
+
+execute sp_addextendedproperty 'MS_Description', 
+   '实例类型(周期类型)
+   0	Single（一般日程）
+   1	Master（循环主日程）
+   2	Instance（循环实例日程）
+   3	Exception （错误）
+   4	MeetingRequest（会议安排）',
+   'user', 'dbo', 'table', 'Calendars', 'column', 'InstanceType'
+go
+
+execute sp_addextendedproperty 'MS_Description', 
+   '参与人帐号或者邮件，多个',
+   'user', 'dbo', 'table', 'Calendars', 'column', 'Attendees'
+go
+
+execute sp_addextendedproperty 'MS_Description', 
+   '参与人姓名，多个',
+   'user', 'dbo', 'table', 'Calendars', 'column', 'AttendeeNames'
+go
+
+execute sp_addextendedproperty 'MS_Description', 
+   '其他参与人，填入邮件',
+   'user', 'dbo', 'table', 'Calendars', 'column', 'OtherAttendee'
+go
+
+execute sp_addextendedproperty 'MS_Description', 
+   '最后一个修改人账号',
+   'user', 'dbo', 'table', 'Calendars', 'column', 'UPAccount'
+go
+
+execute sp_addextendedproperty 'MS_Description', 
+   '最后一个修改人名称',
+   'user', 'dbo', 'table', 'Calendars', 'column', 'UPName'
+go
+
+execute sp_addextendedproperty 'MS_Description', 
+   '最后一次修改时间',
+   'user', 'dbo', 'table', 'Calendars', 'column', 'UPTime'
+go
+
+execute sp_addextendedproperty 'MS_Description', 
+   '循环规则',
+   'user', 'dbo', 'table', 'Calendars', 'column', 'RecurringRule'
+go

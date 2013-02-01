@@ -1,0 +1,23 @@
+﻿body
+{
+    background:#fff;
+    font-size:12px;
+}
+
+.Error
+{
+    padding-left:180px;
+    background:url("images/sorry.jpg") no-repeat left top;
+    height:400px;
+ }
+.Error .head
+{
+    font-size:18px;
+    font-weight:bold;
+}
+.Error .detail
+{   
+    color:Red;
+    padding-top:10px;
+    font-size:14px;
+}

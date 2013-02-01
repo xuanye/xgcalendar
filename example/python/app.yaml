@@ -1,0 +1,26 @@
+application: xgcalendar
+version: 1-3
+runtime: python
+api_version: 1
+handlers:
+- url: /images
+  static_dir: images
+  
+- url: /javascripts
+  static_dir: javascripts
+
+- url: /themes
+  static_dir: themes
+
+- url: /views
+  static_dir: themes
+
+- url: /cm
+  script: calendarmanage.py
+
+- url: /cm/.*
+  script: calendarmanage.py
+
+- url: /.*
+  script: home.py
+

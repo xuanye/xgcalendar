@@ -1,0 +1,38 @@
+{
+  "langcode":"en-us",  
+  "title":"My Schedule",
+  "today":"Today",
+  "create":"Create",  
+  "day":"Day",
+  "month":"Month",
+  "week":"Week",
+  "subject":"Subject",
+  "location":"Where",
+  "eventtime":"Time",
+  "description":"Description",
+  "alldayevent":"All day",
+  "to":"to",
+  "color":"Event color",
+  "attendees":"Attendees",
+  "save":"SAVE",
+  "close":"CLOSE",
+  "cancel":"Discard",
+  
+  "placeholder_subject":"Please enter the subject",
+  "placeholder_location":"Please enter the place",
+  "placeholder_description":"Please enter the description",
+  "placeholder_attendees":"Please enter some attendees", 
+
+  
+  "notvoliddatetimeformat":"The wrong time format",
+  "dberror":"Datebase Error",
+  "edittitle":"Edit Event",
+  "defaultsubject":"Untitled event",
+  "parameterinvalid":"Parameter %s invalid",
+  "starttimegreatthanendtime":"Start time can not be greater than the end time",
+  "successmsg":"Success!",
+  "defaulterrormsg":"Sorry, could not load your data, please try again later",
+
+  "dateformat":"M/D/YYYY",
+  "datefullformat":"M/D/YYYY H:m"
+}

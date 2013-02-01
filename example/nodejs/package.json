@@ -1,0 +1,16 @@
+{
+  "name": "xgcalendar",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "express": "3.0.6",
+    "jade": "*",
+    "mysql":"*",
+    "date-utils":"*",
+    "express-validator":"*",
+    "i18n":"*"    
+  }
+}

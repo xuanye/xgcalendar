@@ -1,0 +1,11 @@
+F:\Temp\myopensource\xgcalendar\aspnet_demo\AzureCalendarMvcWeb\bin\AzureCalendarMvcWeb.dll
+F:\Temp\myopensource\xgcalendar\aspnet_demo\AzureCalendarMvcWeb\bin\AzureCalendarMvcWeb.pdb
+F:\Temp\myopensource\xgcalendar\aspnet_demo\AzureCalendarMvcWeb\bin\SubSonic.Core.dll
+F:\Temp\myopensource\xgcalendar\aspnet_demo\AzureCalendarMvcWeb\bin\System.Web.Abstractions.dll
+F:\Temp\myopensource\xgcalendar\aspnet_demo\AzureCalendarMvcWeb\bin\System.Web.Mvc.dll
+F:\Temp\myopensource\xgcalendar\aspnet_demo\AzureCalendarMvcWeb\bin\System.Web.Routing.dll
+F:\Temp\myopensource\xgcalendar\aspnet_demo\AzureCalendarMvcWeb\bin\System.Web.Mvc.xml
+F:\Temp\myopensource\xgcalendar\aspnet_demo\AzureCalendarMvcWeb\bin\SubSonic.Core.xml
+F:\Temp\myopensource\xgcalendar\aspnet_demo\AzureCalendarMvcWeb\obj\Debug\ResolveAssemblyReference.cache
+F:\Temp\myopensource\xgcalendar\aspnet_demo\AzureCalendarMvcWeb\obj\Debug\AzureCalendarMvcWeb.dll
+F:\Temp\myopensource\xgcalendar\aspnet_demo\AzureCalendarMvcWeb\obj\Debug\AzureCalendarMvcWeb.pdb

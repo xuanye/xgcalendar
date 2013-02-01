@@ -1,0 +1,90 @@
+.minicalendar
+{
+  width: 175px;  
+}
+
+.minical-p1
+{
+
+}
+.minical-p1-head
+{
+  height: 30px;
+  line-height: 30px;
+}
+.minical-p1-head .ymbtn
+{  
+   width: 70px;  
+   color: #333;
+   font-size: 14px;
+   margin: 0px 35px 0px 10px;
+}
+.minical-p1-head a
+{
+  display: inline-block;
+  background: #fff url("../../image/combined_v40_vr.png") no-repeat;
+  height: 12px;
+  line-height: 1em;
+  width: 15px;
+}
+.minical-p1-head a:hover{
+  -moz-opacity:0.6;
+  opacity:0.6;
+  filter:alpha(opacity=60);
+}
+.minical-p1-head a.cal-prev
+{
+  background-position: -243px -35px
+}
+.minical-p1-head a.cal-next
+{
+  background-position: -258px -35px
+}
+.minical-body
+{
+  font-size:11px;
+  font-family:tahoma,verdana,sans-serif;
+}
+
+.minical-body th{
+   width:24px;
+   text-align:center;
+   border-bottom:1px solid #ddd;    
+   cursor:default;
+   padding:0;
+   border-collapse:separate;
+}
+.minical-body th span
+{
+  font-size: 11px;
+  font-weight: normal;
+}
+.minical-body td{  
+   text-align:center; 
+   color:#233d6d;
+   cursor:default;
+   padding:0;
+   border-collapse:separate;
+}
+.minical-body td a{
+  color: #333;
+  font:normal 11px arial,helvetica,tahoma,sans-serif;
+  padding:3px;
+  display:block;  
+  text-align:center;   
+}
+.minical-p2
+{
+  display: none;
+}
+.minical-head
+{
+
+}
+.minical-body .minical-active{cursor:pointer;color:black;}
+.minical-body .minical-selected a{background:#dfecfb;border:1px solid #8db2e3;padding:1px 4px;}
+.minical-body .minical-today a{border:1px solid #aaa;padding:2px;}
+.minical-body .minical-current span{font-weight:bold;}
+.minical-body .minical-prevday a,.minical-body .minical-nextday a{color:#aaa;text-decoration:none!important;}
+.minical-body a:hover,.minical-body .minical-disabled a:hover{text-decoration:none!important;color:black;background:#ddecfe;}
+.minical-body .minical-disabled a{cursor:default;background:#eee;color:#bbb;}

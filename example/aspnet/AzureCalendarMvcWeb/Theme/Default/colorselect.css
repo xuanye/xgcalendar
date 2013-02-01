@@ -1,0 +1,60 @@
+﻿.x-color-palette {    
+    cursor: pointer;
+    background-color:#f5f5f5;
+    border:solid 1px #555;
+    padding-left:3px;
+    padding-top:3px;     
+}
+
+.x-color-palette a {
+   border: 1px solid #fff;
+   float: left;   
+   text-decoration: none;
+   -moz-outline: 0 none;
+   outline: 0 none;
+   cursor: pointer;
+   margin:1px;   
+}
+
+.x-color-palette a:hover {
+	 border: 1px solid #555;
+}
+.x-color-palette a em span
+{
+	padding:0px;
+	cursor: pointer;
+    display: block;
+    height: 11px;
+    line-height: 11px;
+    width: 11px;
+   
+}
+.x-color-palette a:hover em span
+{
+	
+}
+
+.x-color-palette em {
+    display: block;   
+}
+ .containtdiv
+ {
+   border:solid 1px #3C7FB1;
+   background:url("images/dropdown/dropdownhover.gif") no-repeat right center;    
+   padding-right:15px;
+   cursor:pointer;
+   overflow:hidden; 
+   float:left;
+   width:17px;
+   height:18px;
+   margin-top:1px;
+   margin-right:2px;
+ }
+ .leftdiv
+ {
+   vertical-align:middle;
+   width :5px;
+   height:13px;
+   margin:1px 2px 1px 3px;
+   font-size:1px;   
+ }

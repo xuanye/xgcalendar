@@ -1,0 +1,36 @@
+extends layout
+block headcontent
+  link(rel='stylesheet', href='/css/plugin/minical.css') 
+  link(rel='stylesheet', href='/css/plugin/calendar.css')
+  link(rel='stylesheet', href='/css/plugin/dailog.css')
+block content
+  #mainpanel
+    #toppanel
+      p.logo=__("title")
+      div.calbtnp1 
+        button#todaybtn.btn(type='button')=__("today")
+        div.btngroup
+          span#prevbtn.btn.prevbtn(type='button') 
+            em
+          span#nextbtn.btn.nextbtn(type='button') 
+            em
+        div#dateshow 
+      div.calbtnp2 
+        div#viewswithbtn.btngroup
+          button#daybtn.btn(type='button') #{__("day")}
+          button#weekbtn.btn.current(type='button') #{__("week")}
+          button#monthbtn.btn(type='button') #{__("month")}
+    #leftpanel
+      .addbtnp
+        button#addcalbtn.btn.btn-danger(type='button') #{__("create")}
+      #minical.minical 
+    #rightpanel
+      #xgcalendarp 
+block jscontent
+  script(type="text/javascript",src='/js/locales/#{__("langcode")}.js')
+  script(type="text/javascript",src='/js/sea.js')
+  script(type='text/javascript',src='/js/seaconfig.js')
+  script(type='text/javascript')
+      seajs.use('page/index', function(app) {
+            app.init();
+        });

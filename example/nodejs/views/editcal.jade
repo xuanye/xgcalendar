@@ -1,0 +1,66 @@
+doctype 5
+html
+    head
+        title= title
+        link(rel='stylesheet', href='/css/main.css')
+        link(rel='stylesheet', href='/css/form.css')
+        link(rel='stylesheet', href='/css/plugin/dp.css')
+        link(rel='stylesheet', href='/css/plugin/dropdown.css')       
+    body
+        div.editPanel
+          a#closeDailog.closeDailog(href='javascript:void(0);',hidefocus='on')
+          form#fmEdit(action='/calendar/save/'+data.Id,method='post')
+              div.rowctl
+                div.atomctl
+                  label._w90
+                    span *
+                    |#{__("subject")}:
+                  input._w400(type='text',id="tbSubject",name="Subject",placeholder="#{__('placeholder_subject')}",value=data.Subject)  
+              div.rowctl
+                div.atomctl
+                  label._w90 &nbsp;              
+                  input(type='checkbox',id="cbIsAllDayEvent",name="IsAllDayEvent",value='True',checked=data.IsAllDayEvent)                  
+
+                  label.labelforcb(for="cbIsAllDayEvent") #{__("alldayevent")}
+              div.rowctl
+                div.atomctl
+                  label._w90 
+                    span *
+                    |#{__("eventtime")}:
+                  input._w110(type='text',id="tbStartDate",name="StartDate",value=data.startdate)
+                  input(type='text',id="tbStartTime",name="StartTime",style="width:35px;",maxlength="5",value=data.starttime)
+                div.atomctl
+                  label(style='width:25px;') #{__("to")}
+                  input._w110(type='text',id="tbEndDate",name="EndDate",value=data.enddate)
+                  input(type='text',id="tbEndTime",name="EndTime",style="width:35px;",maxlength="5",value=data.endtime)
+              div.rowctl
+                div.atomctl
+                  label._w90 #{__("color")}:
+                  div#dvcolorpanel.colorpanel 
+                  input(type='hidden',id="tbCategory",name="Category",value=data.Category)
+              div.rowctl
+                div.atomctl
+                  label._w90 #{__("location")}:
+                  input._w400(type='text',id="tbLocation",name="Location",placeholder="#{__('placeholder_location')}",value=data.Location)
+              div.rowctl
+                div.atomctl
+                  label._w90 #{__("description")}:
+                  textarea._w400(id="tbDescription",name="Description",placeholder="#{__('placeholder_description')}")=data.Description
+
+              div.rowctl
+                div.atomctl
+                  label._w90 #{__("attendees")}:
+                  input._w400(type='text',id="tbAttendeeNames",name="AttendeeNames",value=data.AttendeeNames,placeholder="#{__('placeholder_attendees')}")          
+              div.rowctl
+                div.btnpanel
+                  button.btn.btn-danger(type='submit') #{__("save")}
+                  button#btnClose.btn(type='button') #{__("cancel")}
+              div(style='display:none')
+                input(type='hidden',id="tbTimeZone",name="TimeZone")
+          script(type="text/javascript",src='/js/locales/#{__("langcode")}.js')
+          script(type="text/javascript",src='/js/sea.js')
+          script(type='text/javascript',src='/js/seaconfig.js')
+          script(type='text/javascript')
+              seajs.use('page/editcal', function(app) {
+                    app.init();
+                });

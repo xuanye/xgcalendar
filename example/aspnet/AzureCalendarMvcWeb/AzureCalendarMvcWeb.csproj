@@ -1,0 +1,305 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{63B867E4-9695-4D23-B28F-5A764DB7CB6F}</ProjectGuid>
+    <ProjectTypeGuids>{603c0e0b-db56-11dc-be95-000d561079b0};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AzureCalendarMvcWeb</RootNamespace>
+    <AssemblyName>AzureCalendarMvcWeb</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="SubSonic.Core, Version=3.0.0.3, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\REFDLL\SubSonic.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Entity">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Abstractions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CMController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helps\CalendarViewFormat.cs" />
+    <Compile Include="Helps\LocalizationHelpers.cs" />
+    <Compile Include="Helps\TimeHelper.cs" />
+    <Compile Include="Models\Calendar.cs" />
+    <Compile Include="Models\CalendarService.cs" />
+    <Compile Include="Models\ICalendarService.cs" />
+    <Compile Include="Models\JsonCalendarViewData.cs" />
+    <Compile Include="Models\JsonError.cs" />
+    <Compile Include="Models\JsonReturnMessages.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="CreateTable.txt" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\bgs\CardHeadbg.jpg" />
+    <Content Include="Images\bgs\CardHeadbg.png" />
+    <Content Include="Images\bgs\ch.gif" />
+    <Content Include="Images\bgs\headbg.gif" />
+    <Content Include="Images\bgs\minus1.gif" />
+    <Content Include="Images\bgs\plus1.gif" />
+    <Content Include="Images\home\logo.gif" />
+    <Content Include="Images\home\toolbarbg.jpg" />
+    <Content Include="Images\home\top_bg.jpg" />
+    <Content Include="Images\icons\add.png" />
+    <Content Include="Images\icons\appt.gif" />
+    <Content Include="Images\icons\Btn.Close.gif" />
+    <Content Include="Images\icons\cacheClear.png" />
+    <Content Include="Images\icons\cal-day.gif" />
+    <Content Include="Images\icons\cal-month.gif" />
+    <Content Include="Images\icons\cal-proc.gif" />
+    <Content Include="Images\icons\cal-rsc-perm.gif" />
+    <Content Include="Images\icons\cal-week.gif" />
+    <Content Include="Images\icons\cal-wk-week.gif" />
+    <Content Include="Images\icons\cal.gif" />
+    <Content Include="Images\icons\calendar.gif" />
+    <Content Include="Images\icons\calwrkwk.gif" />
+    <Content Include="Images\icons\canmtg.gif" />
+    <Content Include="Images\icons\circle_animation.gif" />
+    <Content Include="Images\icons\clndr.gif" />
+    <Content Include="Images\icons\clndrsmll.gif" />
+    <Content Include="Images\icons\date.png" />
+    <Content Include="Images\icons\date_add.png" />
+    <Content Include="Images\icons\date_reflash.png" />
+    <Content Include="Images\icons\delete.png" />
+    <Content Include="Images\icons\edit.png" />
+    <Content Include="Images\icons\folder_user.gif" />
+    <Content Include="Images\icons\group.gif" />
+    <Content Include="Images\icons\group_add.gif" />
+    <Content Include="Images\icons\ico1.gif" />
+    <Content Include="Images\icons\indicator.gif" />
+    <Content Include="Images\icons\Item.Add.gif" />
+    <Content Include="Images\icons\Item.Delete.gif" />
+    <Content Include="Images\icons\Item.Edit.gif" />
+    <Content Include="Images\icons\Item.Input.gif" />
+    <Content Include="Images\icons\Item.Save.gif" />
+    <Content Include="Images\icons\Item.Search.gif" />
+    <Content Include="Images\icons\msg_center.gif" />
+    <Content Include="Images\icons\msg_email.gif" />
+    <Content Include="Images\icons\msg_im.gif" />
+    <Content Include="Images\icons\msg_mobile.gif" />
+    <Content Include="Images\icons\mtgreq-cancel.gif" />
+    <Content Include="Images\icons\mtgreq.gif" />
+    <Content Include="Images\icons\mtgrsp-accept.gif" />
+    <Content Include="Images\icons\mtgrsp-decline.gif" />
+    <Content Include="Images\icons\mtgrsp-tent.gif" />
+    <Content Include="Images\icons\pgrs-sm.gif" />
+    <Content Include="Images\icons\resultset_next.png" />
+    <Content Include="Images\icons\resultset_previous.png" />
+    <Content Include="Images\icons\rowdelete.png" />
+    <Content Include="Images\icons\table.gif" />
+    <Content Include="Images\icons\table_c.gif" />
+    <Content Include="Images\icons\table_copy.png" />
+    <Content Include="Images\icons\table_r.png" />
+    <Content Include="Images\icons\table_refresh.png" />
+    <Content Include="Images\icons\tick.png" />
+    <Content Include="Images\icons\turnback.png" />
+    <Content Include="Images\icons\view.png" />
+    <Content Include="Javascripts\Common.js" />
+    <Content Include="Javascripts\jquery.js" />
+    <Content Include="Javascripts\jquery.min.js" />
+    <Content Include="Javascripts\lib\blackbird.js" />
+    <Content Include="Javascripts\Plugins\jquery.alert.js" />
+    <Content Include="Javascripts\Plugins\jquery.colorselect.js" />
+    <Content Include="Javascripts\Plugins\jquery.datepicker.js" />
+    <Content Include="Javascripts\Plugins\jquery.dropdown.js" />
+    <Content Include="Javascripts\Plugins\jquery.form.js" />
+    <Content Include="Javascripts\Plugins\jquery.ifrmdailog.js" />
+    <Content Include="Javascripts\Plugins\jquery.validate.js" />
+    <Content Include="Javascripts\Plugins\xgcalendar_lang_en_US.js" />
+    <Content Include="Javascripts\Plugins\xgcalendar_lang_zh_CN.js" />
+    <Content Include="Theme\Default\alert.css" />
+    <Content Include="Theme\Default\calendar.css" />
+    <Content Include="Theme\Default\colorselect.css" />
+    <Content Include="Theme\Default\dailog.css" />
+    <Content Include="Theme\Default\dp.css" />
+    <Content Include="Theme\Default\dropdown.css" />
+    <Content Include="Theme\Default\images\alert\bot.gif" />
+    <Content Include="Theme\Default\images\alert\close.gif" />
+    <Content Include="Theme\Default\images\alert\corners.gif" />
+    <Content Include="Theme\Default\images\alert\cornersBlue.gif" />
+    <Content Include="Theme\Default\images\alert\help.gif" />
+    <Content Include="Theme\Default\images\alert\important.gif" />
+    <Content Include="Theme\Default\images\alert\info.gif" />
+    <Content Include="Theme\Default\images\alert\title.gif" />
+    <Content Include="Theme\Default\images\alert\title1.gif" />
+    <Content Include="Theme\Default\images\calendar\bubble_combined.png" />
+    <Content Include="Theme\Default\images\calendar\combined.gif" />
+    <Content Include="Theme\Default\images\calendar\grid.png" />
+    <Content Include="Theme\Default\images\calendar\gridth.gif" />
+    <Content Include="Theme\Default\images\calendar\headbg.gif" />
+    <Content Include="Theme\Default\images\calendar\indicator_web20_working.gif" />
+    <Content Include="Theme\Default\images\calendar\load-bg.png" />
+    <Content Include="Theme\Default\images\calendar\tbg.gif" />
+    <Content Include="Theme\Default\images\dailog\app-form.png" />
+    <Content Include="Theme\Default\images\dailog\headbg.gif" />
+    <Content Include="Theme\Default\images\dailog\tool-sprites.gif" />
+    <Content Include="Theme\Default\images\dailog\top-bottom.png" />
+    <Content Include="Theme\Default\images\dp\btn-arrow-light.gif" />
+    <Content Include="Theme\Default\images\dp\btn-arrow.gif" />
+    <Content Include="Theme\Default\images\dropdown\dropdown.gif" />
+    <Content Include="Theme\Default\images\dropdown\dropdownhover.gif" />
+    <Content Include="Theme\Default\images\share\card.gif" />
+    <Content Include="Theme\Default\images\share\glass-bg.gif" />
+    <Content Include="Theme\Default\images\share\hd-sprite.gif" />
+    <Content Include="Theme\Default\images\share\headbg.gif" />
+    <Content Include="Theme\Default\images\share\information.png" />
+    <Content Include="Theme\Default\images\share\left-btn.gif" />
+    <Content Include="Theme\Default\images\share\right-btn.gif" />
+    <Content Include="Theme\Default\images\share\table.gif" />
+    <Content Include="Theme\Default\images\share\table_c.gif" />
+    <Content Include="Theme\Default\images\share\tool-sprites.gif" />
+    <Content Include="Theme\Default\images\validation\accept.png" />
+    <Content Include="Theme\Default\images\validation\exclamation.png" />
+    <Content Include="Theme\Default\images\validation\tooltop.gif" />
+    <Content Include="Theme\Default\images\validation\warning.gif" />
+    <Content Include="Theme\Default\main.css" />
+    <Content Include="Theme\Shared\blackbird.css" />
+    <Content Include="Theme\Shared\Error.css" />
+    <Content Include="Theme\Shared\images\blackbird_icons.png" />
+    <Content Include="Theme\Shared\images\blackbird_panel.png" />
+    <Content Include="Theme\Shared\images\sorry.jpg" />
+    <Content Include="UpdateFrom20091122.txt" />
+    <Content Include="Views\CM\EditCalendar.aspx" />
+    <Content Include="Views\CM\MyCalendar.aspx" />
+    <Content Include="Views\CM\ViewCalendar.aspx" />
+    <Content Include="Views\CM\_CurrentCalData.ascx" />
+    <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Home\Test.aspx" />
+    <Content Include="Views\User\CreateUser.aspx" />
+    <Content Include="Views\User\Login.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Views\Shared\Error.aspx" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\lang.en-US.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>lang.en-US.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="App_GlobalResources\lang.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>lang.Designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Images\icons\cn.gif" />
+    <Content Include="Images\icons\us.gif" />
+    <Content Include="Javascripts\Plugins\datepicker_lang_en_US.js" />
+    <Content Include="App_GlobalResources\lang.zh-CN.resx">
+      <LastGenOutput>lang.zh-CN.Designer.cs</LastGenOutput>
+      <Generator>GlobalResourceProxyGenerator</Generator>
+    </Content>
+    <Content Include="Javascripts\Plugins\datepicker_lang_en_AU.js" />
+    <Content Include="Javascripts\Plugins\xgcalendar_lang_en_AU.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\lang.en-AU.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>lang.en-AU.designer.cs</LastGenOutput>
+    </Content>
+    <Content Include="Images\btn_donate_LG.gif" />
+    <Content Include="Images\icons\au.gif" />
+    <Content Include="Javascripts\lib\jquery.easydrag.js" />
+    <Content Include="Javascripts\Plugins\datepicker_lang_zh_CN.js" />
+    <Content Include="Javascripts\Plugins\xgcalendar.min.js" />
+    <Content Include="Theme\Default\images\dailog\left-corners.png" />
+    <Content Include="Theme\Default\images\dailog\left-right.png" />
+    <Content Include="Theme\Default\images\dailog\right-corners.png" />
+    <Content Include="Theme\Default\images\share\tbg.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)\..\$(ProjectName)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>4753</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
