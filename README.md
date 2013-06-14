@@ -4,6 +4,12 @@ xgcalendar
 一个基于jQury的日历插件，可以帮助用户快速的创建日程（活动），类似谷歌日历
 为啥叫xgcalendar? X=xuanye G=Google Calendar Like
 
+####周视图  
+![xgcalendar screenshot1](doc/images/Screenshot1.jpg) 
+ 
+####月视图  
+![xgcalendar screenshot2](doc/images/Screenshot2.jpg)  
+
 最新的demo地址： [http://xgcalendar.cloudfoundry.com/calendar](http://xgcalendar.cloudfoundry.com/calendar "搓我")  
 原demo地址： [http://xgcal.sinaapp.com/demo/](http://xgcal.sinaapp.com/demo/ "搓我")
 ## 功能列表
