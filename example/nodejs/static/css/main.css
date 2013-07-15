@@ -42,6 +42,26 @@ body
   border-bottom: solid 1px #ddd; 
   margin: 0px 0px 10px 0px;
 }
+#loadingpannel,#errorpannel{
+   position: absolute;
+   top: 10px;
+   left: 565px;
+   height: 20px;
+   line-height: 20px;
+   padding: 1px 4px 1px 4px;
+   font-weight: normal;
+   z-index:998;
+   display: none;
+}
+#loadingpannel{
+  background:#c44;    
+  color:#fff;  
+}
+#errorpannel
+{
+  padding: 1px 4px 1px 4px;
+  background:#fad163; 
+}
 #toppanel .btn
 {
   font-weight:600;
@@ -101,7 +121,7 @@ p.logo
   width: 33px;
   display: block;
   height: 20px;
-  background-image: url("../../image/combined_v40_vr.png");
+  background-image: url("../image/combined_v40_vr.png");
   background-repeat: no-repeat;
 }
 .calbtnp1 .btngroup .prevbtn em
