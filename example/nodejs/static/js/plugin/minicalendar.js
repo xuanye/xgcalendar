@@ -23,8 +23,7 @@ define(function(require, exports, module) { //参数名字不能改
         // body...
         var me    = this;
         var aprev = this.__parent.find("a.cal-prev");
-        var anext = this.__parent.find("a.cal-next");
-        var tb    = this.__parent.find("table.minical-body tbody td");
+        var anext = this.__parent.find("a.cal-next");       
         aprev.click(function(){           
             me.__option.currentDate = DateAdd("m",-1,me.__option.currentDate);
             me.filldate();
@@ -40,24 +39,8 @@ define(function(require, exports, module) { //参数名字不能改
             {
               me.__option.onchange.call(me,me.__option.currentDate);
             }
-        });
-        tb.each(function(i){
-          $(this).click(tbclick);
-        });
-        function tbclick(){
-            me.__parent.find("td.minical-current").each(function(){
-              $(this).removeClass("minical-current");
-            });     
-            $(this).addClass("minical-current").blur();    
-            var idate = $(this).attr("xdate");
-            var date = idate.split(/\D/);
-            me.__option.currentDate= new Date(date[0],parseInt(date[1],10)-1,date[2]);          
-            if(me.__option.onchange)
-            {
-               me.__option.onchange.call(me,me.__option.currentDate);
-            }
-
-        }
+        });       
+      
       },
       render:function (argument) {       
         var html=[];
@@ -78,6 +61,7 @@ define(function(require, exports, module) { //参数名字不能改
         this.__parent.html(html.join(""));
       },
       filldate:function () {
+          var me = this;
           var tb = this.__parent.find("table.minical-body tbody");        
           var year = this.__option.currentDate.getFullYear();
           var monthName = this.__option.monthName[this.__option.currentDate.getMonth()];
@@ -120,7 +104,23 @@ define(function(require, exports, module) { //参数名字不能改
                     bhm.push("</tr>");
                 }
           }
-          tb.html(bhm.join(""));
+          tb.html(bhm.join(""));        
+          tb.find("td").each(function(i){
+             $(this).click(tbclick);
+          });
+          function tbclick(){         
+            me.__parent.find("td.minical-current").each(function(){
+              $(this).removeClass("minical-current");
+            });     
+            $(this).addClass("minical-current").blur();    
+            var idate = $(this).attr("xdate");
+            var date = idate.split(/\D/);
+            me.__option.currentDate= new Date(date[0],parseInt(date[1],10)-1,date[2]);          
+            if(me.__option.onchange)
+            {
+               me.__option.onchange.call(me,me.__option.currentDate);
+            }
+        }
       },
       goto:function(date) {
         // body...

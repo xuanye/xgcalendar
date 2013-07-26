@@ -1,5 +1,5 @@
 ﻿/*
-* Copyright (c) 2009 Xuanye.wan
+* Copyright (c) 2013 Xuanye.wan
 * Last update: 2013-02-1
 * Author:假正经哥哥(xuanye)
 * Email:xuanye.wan@gmail.com 
