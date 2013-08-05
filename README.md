@@ -10,7 +10,7 @@ xgcalendar
 ####月视图  
 ![xgcalendar screenshot2](doc/images/Screenshot2.jpg)  
 
-最新的demo地址： [http://xgcalendar.cloudfoundry.com/calendar](http://xgcalendar.cloudfoundry.com/calendar "搓我")  
+最新的demo地址： [http://xgcal.sinaapp.com/demo2/](http://xgcal.sinaapp.com/demo2/ "搓我")  
 原demo地址： [http://xgcal.sinaapp.com/demo/](http://xgcal.sinaapp.com/demo/ "搓我")
 ## 功能列表
   

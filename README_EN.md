@@ -11,7 +11,7 @@ why named xgcalendar? X=xuanye G=Google Calendar Like
 ####month view  
 ![xgcalendar screenshot2](doc/images/Screenshot2.jpg)  
 
-laster demo： [http://xgcalendar.cloudfoundry.com/calendar](http://xgcalendar.cloudfoundry.com/calendar "click me")  
+laster demo： [http://xgcal.sinaapp.com/demo2/](http://xgcal.sinaapp.com/demo2/ "click me")  
 prev version： [http://xgcal.sinaapp.com/demo/](http://xgcal.sinaapp.com/demo/ "click me")
 
 ## Features
