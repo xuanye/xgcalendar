@@ -1,0 +1,378 @@
+form
+{
+	padding:10px;
+}
+fieldset
+{	
+	border: solid 1px #ccc;		
+	padding:10px;
+	_zoom:1;	
+	margin:0 0 10px 0;
+	overflow:hidden;
+}
+
+fieldset legend
+{	
+	padding:5px 10px;
+    background-color:#4068A7;
+    color:#FFF;
+    border-radius:3px;
+    -moz-border-radius:3px;
+    -webkit-border-radius:3px;
+    box-shadow:2px 2px 4px #666;
+    -moz-box-shadow:2px 2px 4px #666;
+    -webkit-box-shadow:2px 2px 4px #666;  
+}
+fieldset.sip
+{
+	border:none;
+	border-top: solid 1px #d0d4d8;	
+	padding:15px 10px;
+	margin:0 0 0px 0;
+}
+
+fieldset.sip legend
+{	
+  display:none;
+}
+
+form label
+{	
+    display:block;
+    font-size:12px;
+    font-weight:normal;
+    letter-spacing:1px;
+    text-align:right;
+    width:80px;
+    float:left;
+    height:25px;
+	  line-height:25px;	
+}
+form label span
+{
+	color:Red;
+	letter-spacing:4px;
+	height:25px;
+	line-height:25px;
+}
+
+form label.labelforcb
+{
+	float:left;
+	width:auto;
+  height:20px \9;
+  line-height:20px \9; 
+	margin:2px 0 \0/;
+}
+*+html form label.labelforcb
+{	
+	margin:4px 0;
+}
+form div.rowctl
+{
+	clear:both;
+}
+form div.atomctl
+{
+	float:left;
+	display:block;
+	margin:2px 0;
+}
+input
+{
+	float:left;
+	clear:right;
+	margin:0px 0px 6px 10px;
+}
+
+input[type='text'],input[type='password']
+{
+	border: solid 1px #b4b4b4;	
+	background:#fff url("../image/bg/text-bg.gif") repeat-x left -1px;
+	word-break:break-all; 
+	height: 17px;
+	line-height: 17px;
+  padding: 4px 0px; 	
+	color:#333;
+	font-size:12px;
+	padding-left:5px;	
+}
+input.readonly
+{
+	border: solid 1px #ccc;	
+	background:#F1F1FE;
+	color:#999;
+}
+textarea.WaterMarkState,input.WaterMarkState
+{
+	color:#999;
+}
+textarea
+{
+	/*border: solid 1px #907714;*/
+	border: solid 1px #b4b4b4;
+	background:#fff url("../image/bg/text-bg.gif") repeat-x left -1px;
+	overflow: auto;
+	height:60px;
+	padding:5px;
+	float:left;
+	clear:right;
+	margin:0px 0px 6px 10px;
+}
+input.readonly
+{
+    border: solid 1px #ccc;
+    /*background:#f4f4f4;*/
+    color:#999;
+}
+button,.formtable input[type="button"],.formtable input[type="submit"]
+{
+	border:#cccccc 1px solid;
+	background:#f1f8fe;
+	height:23px;	
+}
+select
+{	
+	border:#b4b4b4 solid 1px;
+	display:inline-block;	
+	height:25px;
+	line-height:25px;
+	color:#555;
+	font-size:14px;
+	margin:0px 0px 6px 10px;
+	float:left;
+	clear:right;
+	padding:2px 4px;	
+}
+input[type="file"] { 
+   /* In IE7, the height of the select element cannot be changed by height, only font-size */
+  *margin-top: 4px;
+  /* For IE7, add top margin to align select with labels */
+ 
+  height:25px;
+  line-height:25px;
+}
+
+/**************checkbox/radiobox ********************/
+input[type=checkbox],
+  input[type=radio] 
+{
+    height:25px;
+    line-height:25px;
+    width:25px; 
+    margin:6px 4px 6px 10px;
+    border: none \9;
+}
+input[type=checkbox],
+  input[type=radio] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 13px;
+    height: 13px;   
+    cursor: pointer;
+    vertical-align: bottom;
+    background: #fff;
+    border: 1px solid #dcdcdc;
+    border: none \9;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+  }
+  input[type=checkbox]:active,
+  input[type=radio]:active {
+    border-color: #c6c6c6;
+    background: #ebebeb;
+  }
+  input[type=checkbox]:hover {
+    border-color: #c6c6c6;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+    -moz-box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.1);
+  }
+  input[type=radio] {
+    -webkit-border-radius: 1em;
+    -moz-border-radius: 1em;
+    border-radius: 1em;
+    width: 15px;
+    height: 15px;
+  }
+  input[type=checkbox]:checked,
+  input[type=radio]:checked {
+    background: #fff;
+  }
+  input[type=radio]:checked::after {
+    content: '';
+    display: block;
+    position: relative;
+    top: 3px;
+    left: 3px;
+    width: 7px;
+    height: 7px;
+    background: #666;
+    -webkit-border-radius: 1em;
+    -moz-border-radius: 1em;
+    border-radius: 1em;
+  }
+  input[type=checkbox]:checked::after {
+    content: url(../image/checkmark.png);
+    display: block;
+    position: absolute;
+    top: -6px;
+    left: -5px;
+  }
+  input[type=checkbox]:focus {
+    outline: none;
+    border-color:#4d90fe;
+  }
+/************* checkbox/radiobox end*********************/
+.input-onfocus{
+	background:#F5FEEB;
+	border:1px solid #CDFA9C;	
+}
+.xeasy-formItemMust
+{
+	color: red;
+}
+
+/* JQuery Validation */
+label.error
+{
+	padding: 2px 0 2px 20px;
+	display: block;
+	background: url(../image/plugin/validate/exclamation.png) no-repeat 2px center;
+}
+input.error, select.error, textarea.error, input.cusErrorPanel, cusErrorPanel.cusErrorPanel, textarea.cusErrorPanel
+{
+	border: solid 1px #c30;
+	background:url("../image/bg/invalid_line.gif") repeat-x left bottom;
+}
+label.checked
+{
+	float: none;
+	position: relative;
+	padding: 0px 0 0px 18px;
+	background: url(../image/plugin/validate/accept.png) no-repeat 2px center;
+}
+div.cusErrorPanel
+{
+	z-index: auto;
+	position: absolute;
+	width: 140px;
+	height: 35px;
+	overflow: hidden;
+	text-indent: 5px;
+	line-height: 40px;
+	font-size: 12px;
+	padding-left: 5px;
+	padding-right: 5px;
+	background: url(../image/plugin/validate/tooltop2.gif) no-repeat left top;
+}
+div.cusError
+{
+	z-index: auto;
+	position: absolute;
+	width: 280px;
+	height: 35px;
+	overflow: hidden;
+	text-indent: 5px;
+	line-height: 40px;
+	font-size: 12px;
+	font-family: Arial;
+	background: url(../image/plugin/validate/tooltop.gif) no-repeat left top;
+}
+._w90
+{
+  width:90px;
+}
+._w110
+{
+  width:110px;
+}
+._w400
+{
+  width:400px;
+}
+input._w110
+{
+  width:106px;
+}
+input._w400
+{
+  width:396px;
+}
+textarea._w400
+{
+   width:390px;
+}
+form .btn-danger
+{
+  font-size: 14px;
+}
+/**********************以下非通用样式***************************/
+.btnpanel
+{
+  padding-left: 100px;
+  margin-top: 20px;
+}
+.btnpanel button
+{
+  width:70px; 
+  margin-top: 20px;
+	margin-right:30px;
+}
+.colorpanel
+{  
+  display:block;
+  font-size:12px;
+  font-weight:normal;
+  letter-spacing:1px; 
+  width:450px;
+  float:left;
+  height:20px;
+  line-height:20px; 
+  margin:0px 0px 0px 10px;
+}
+.colorpanel span.split
+{
+  float: left;
+  color:#999;
+  display:inline-block;
+  font-size: 14px;
+  width: 5px;
+  margin:3px 4px 3px 0px;  
+  line-height:15px; 
+}
+.colorpanel a {  
+  float: left;
+  display:inline-block;
+  height: 15px;
+  width: 15px;
+  margin:3px 3px 3px 0px; 
+  color: #fff;
+  text-align: center; 
+  font-size: 13px;
+  line-height:15px;  
+}
+.editPanel
+{
+  padding: 30px 0 0 0;
+}
+a.closeDailog
+{
+  position: absolute;
+  top:7px;
+  right:7px;
+  display: block;
+  width: 14px;
+  height:14px;
+  background:#fff url("../image/combined_v40_vr.png") no-repeat -228px -48px
+}
+a.closeDailog:hover{
+  opacity:.7;
+  -moz-opacity:.7;
+  filter:alpha(opacity=70);
+}

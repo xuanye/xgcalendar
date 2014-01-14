@@ -1,0 +1,323 @@
+html{}
+body,h1,h2,h3,h4,h5,h6,hr,div,p,blockquote,dl,dt,dd,ul,ol,li,pre,fieldset,lengend,input,textarea,form,th,td{margin:0;padding:0;}
+body,select,textarea,th,td{font-size:12px; font-family:"微软雅黑","宋体",Helvetica,Arial,simsun;}
+h1,h2,h3,h4,h5,h6{font-size:100%;}
+table{border-collapse:collapse;border-spacing:0;}
+code,kbd,pre,samp,tt{font-family:"Courier New",Courier,monospace;}
+caption,th{ text-align:left;}
+small{font-size:100%;}
+dl,dt,dd,ul,ol,li{list-style:none;}
+a{text-decoration:none;}
+abbr,acronym{border:0;font-variant:normal;}
+abbr[title],acronym[title]{border-bottom:1px dotted;cursor:help;}
+q:before,q:after{content:'';}
+/*:focus{outline:0;}*/
+fieldset{border:none;}
+address,caption,cite,code,dfn,em,strong,th,var,optgroup{font-style:inherit;}
+input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit; outline:none;}
+input,button,textarea,select{*font-size:100%; outline:none;resize:none;}
+button::-moz-focus-inner {  border:none; }
+sup{vertical-align:baseline;}
+sub{vertical-align:baseline;}
+hr{border:none;height:0;visibility:hidden;}
+img{ -ms-interpolation-mode:bicubic; border:none; vertical-align:middle;}
+textarea{ overflow-y: scroll}
+object,embed{ outline:none;}
+section,article,aside,header,footer,nav,dialog,figure,details{display:block;}
+figure{margin:0;}
+body
+{
+	background-color:#fff;	
+	width:100%;
+	height:100%;
+}
+#mainpanel
+{
+  margin: 5px;
+}
+#toppanel
+{
+  height:40px;
+  line-height: 40px;
+  border-bottom: solid 1px #ddd; 
+  margin: 0px 0px 10px 0px;
+}
+#loadingpannel,#errorpannel{
+   position: absolute;
+   top: 10px;
+   left: 565px;
+   height: 20px;
+   line-height: 20px;
+   padding: 1px 4px 1px 4px;
+   font-weight: normal;
+   z-index:998;
+   display: none;
+}
+#loadingpannel{
+  background:#c44;    
+  color:#fff;  
+}
+#errorpannel
+{
+  padding: 1px 4px 1px 4px;
+  background:#fad163; 
+}
+#toppanel .btn
+{
+  font-weight:600;
+}
+p.logo
+{
+  float: left;
+  font-size: 14px;
+  margin: 0px 0px 0 15px;
+  color: #DD4B39;
+  display: block;
+  width: 165px;
+}
+.calbtnp1
+{
+   float: left;
+   padding: 3px 0;
+}
+#todaybtn{
+  float: left;
+  width: auto;
+  min-width: 0px;
+}
+.calbtnp1 .btngroup
+{
+  margin-left: 10px;
+  float: left;
+}
+.btngroup .btn
+{
+  z-index: 1;
+  margin-left: -1px;
+  position: relative;
+}
+.btngroup .btn.current
+{
+   background-color: #eee;
+   border-color: #ccc;
+   z-index: 888;
+}
+.btn:hover,.btn.active
+{
+    border-color: #c6c6c6;
+     z-index: 888;
+}
+.calbtnp1 .btngroup .btn
+{
+  float: left;
+  display: block;
+  width: 40px; 
+  min-width: 0px;
+  padding: 0px;
+  height: 27px
+}
+.calbtnp1 .btngroup em{
+  margin: 4px auto;
+  width: 33px;
+  display: block;
+  height: 20px;
+  background-image: url("../image/combined_v40_vr.png");
+  background-repeat: no-repeat;
+}
+.calbtnp1 .btngroup .prevbtn em
+{  
+ 
+  background-position: -241px -17px;
+}
+.calbtnp1 .btngroup .nextbtn em
+{  
+ 
+  background-position: -241px 0px;
+}
+#dateshow
+{
+  font-size: 14px;
+  line-height: 30px;
+   float: left;
+   margin-left: 20px;
+}
+.calbtnp2
+{
+   float: right;
+   width: 300px;
+}
+.calbtnp2 .btngroup .btn
+{
+  float: left;
+  display: block;
+  width: 70px; 
+  min-width: 52px;    
+}
+.calbtnp3
+{
+  float: right;
+  width: 100px;
+}
+.calbtnp3 span
+{
+  float: left;
+  margin-right: 4px;
+}
+.calbtnp3 a
+{
+  color:#333;
+  float: left;
+  margin-right: 4px;
+}
+.calbtnp3 a:hover
+{
+  text-decoration: underline;
+}
+.calbtnp3 a:visited{
+  color:#333;
+}
+#leftpanel
+{
+	float: left;
+
+	width: 180px;
+	height:600px;	
+  margin-right: -182px;
+}
+.addbtnp
+{
+   text-align: center;
+
+}
+.addbtnp button{
+  margin: 4px;
+}
+.minical
+{
+
+}
+#rightpanel
+{		
+	height:600px;	
+	width: auto;
+	margin-left:180px;
+}
+#bbit-cal-quickAddBTN
+{
+  min-width :54px;
+  width:70px;
+  height:29px;
+  line-height:25px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  font-size:14px;
+  color: #333333;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  background-color: #f5f5f5;
+  border-color: #e6e6e6;
+  *background-color: #e6e6e6;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  border: 1px solid #ddd;
+  *border: 0; 
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+  *margin-left: .3em;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+}
+.bottom
+{
+  text-align: center;
+  margin-top: 10px;
+  color: #555;
+}
+.bottom a{
+  color: #555;
+}
+.bottom a:hover{
+  color: #333;
+  text-decoration: underline;
+}
+/**********button*****************/
+button
+{
+  width:60px;
+  height:25px;
+  font-size: 14px;
+}
+.btn
+{
+  min-width :54px;
+  width:60px;
+  height:29px;
+  line-height:25px;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  font-size:14px;
+  color: #333333;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  background-color: #f5f5f5;
+  border-color: #e6e6e6;
+  *background-color: #e6e6e6;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  border: 1px solid #ddd;
+  *border: 0; 
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+  *margin-left: .3em;
+  -webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  -moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
+}
+
+.btn-primary
+{
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #006dcc;
+  border-color: #0044cc;
+  *background-color: #0044cc;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.btn-warning {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #f89406;
+  border-color: #f89406;
+  *background-color: #f89406;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.btn-danger {
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #d14836; 
+  border-color: #bd362f;
+  *background-color: #d14836;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+.btn-danger:hover
+{
+   background-color: #c53727;
+   border-color: #d14836;
+}
+.btn-info
+{
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: #49afcd; 
+  border-color: #2f96b4;
+  *background-color: #2f96b4;
+  /* Darken IE7 buttons by default so they stand out more given they won't have borders */
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+}
+/**********button end*****************/

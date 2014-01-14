@@ -1,0 +1,7 @@
+name: xgcalendar
+version: 1
+#cron:
+#    - description: cron test
+#      url: index.php
+#      schedule: every 43 mins
+#      timezone: Beijing
