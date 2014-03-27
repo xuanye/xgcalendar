@@ -2,7 +2,7 @@ xgcalendar
 ========================================
 谷歌日历风格的日历控件
 一个基于jQury的日历插件，可以帮助用户快速的创建日程（活动），类似谷歌日历
-为啥叫xgcalendar? X=xuanye G=Google Calendar Like .
+为啥叫xgcalendar? X=xuanye G=Google Calendar Like 
 
 ####周视图  
 ![xgcalendar screenshot1](doc/images/Screenshot1.jpg) 
