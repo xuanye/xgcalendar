@@ -1,17 +1,9 @@
 ﻿/*
-* XgCalendar  v1.2.0.4
-* Base on jQuery 1.2.6+
-* http://xuanye.cnblogs.com/
-*
-* Copyright (c) 2009 Xuanye.wan
-* under the Apache License 2.0 
-* http://www.apache.org/licenses/LICENSE-2.0
-*
-* Date: 2009-11-24 11:23
+* Copyright (c) 2013 Xuanye.wan
+* Last update: 2013-02-1
 * Author:假正经哥哥(xuanye)
-* Blog:http://xuanye.cnblogs.com/
-* Email:xuanye.wan@gmail.com 
-* Source:http://code.google.com/p/xgcalendar/
+* Email:xuanye.wan@gmail.com
+* Source:https://github.com/xuanye/xgcalendar
 */
 ; (function($) {
     var __WDAY = new Array(i18n.xgcalendar.dateformat.sun, i18n.xgcalendar.dateformat.mon, i18n.xgcalendar.dateformat.tue, i18n.xgcalendar.dateformat.wed, i18n.xgcalendar.dateformat.thu, i18n.xgcalendar.dateformat.fri, i18n.xgcalendar.dateformat.sat);
@@ -66,7 +58,7 @@
     }
     if (!DateAdd || typeof (DateDiff) != "function") {
         var DateAdd = function(interval, number, idate) {
-            number = parseInt(number);
+            number = parseInt(number,10);
             var date;
             if (typeof (idate) == "string") {
                 date = idate.split(/\D/);
@@ -156,22 +148,22 @@
     }
     $.fn.bcalendar = function(option) {
         var def = {
-            view: "week", //默认是周视图day,week,month 
+            view: "week", //默认是周视图day,week,month
             weekstartday: 1,  //默认星期一开始
             theme: 0, //默认使用第一套主题
             height: false, //视图的高度，如果不设置则默认获取所在页面的高度
-            url: "", //请求数据的Url         
+            url: "", //请求数据的Url
             eventItems: [], //日程数据，可通过此参数设置初始化数据
             method: "POST", //异步提交数据的方式，默认为POST建议不要修改。
             showday: new Date(), //显示日期，默认为当天
             onBeforeRequestData: false, //在异步调用调用开始之前执行的函数
             onAfterRequestData: false, //异步调用完成之后
-            onRequestDataError: false, //在异步调用发生异常时             
+            onRequestDataError: false, //在异步调用发生异常时
             onWeekOrMonthToDay: false, //当周视图切换到日视图，因为在转换在内部完成，所以公开一个入口可得到该行为
             quickAddHandler: false, //快速添加的拦截函数，该参数设置后quickAddUrl参数的设置将被忽略
             quickAddUrl: "", //快速添加日程响应的 Url 地址
             quickUpdateUrl: "", //拖拽更新时响应的 Url 地址
-            quickDeleteUrl: "", //快速删除日程时响应的Urk 地址       
+            quickDeleteUrl: "", //快速删除日程时响应的Urk 地址
             autoload: false, //自动加载，如果eventItems参数没有配置，可启用该参数，默认第一次展现时
             readonly: false, //是否只读，某些情况下，可设置整个
             extParam: [], //额外参数，在所以异步请求中，都会附加的额外参数，可配置其他扩展的查询条件
@@ -184,13 +176,14 @@
         if (eventDiv.length == 0) {
             eventDiv = $("<div id='gridEvent' style='display:none;'></div>").appendTo(document.body);
         }
-	
+
         var cc = $("#cal-month-cc");
 	    if (cc.length == 0) {
            $( "<div id='cal-month-cc' class='cc'><div id='cal-month-cc-header'><div class='cc-close' id='cal-month-closebtn'></div><div id='cal-month-cc-title' class='cc-title'></div></div><div id='cal-month-cc-body' class='cc-body'><div id='cal-month-cc-content' class='st-contents'><table class='st-grid' cellSpacing='0' cellPadding='0'><tbody></tbody></table></div></div></div>").appendTo(document.body);
         }
 		cc=null;
 		var gridcontainer = $(this);
+        gridcontainer.css("position","relative");
         option = $.extend(def, option);
         //如果快速更新链接陪游配置，则快速新增不能实现
         if (option.quickUpdateUrl == null || option.quickUpdateUrl == "") {
@@ -217,10 +210,10 @@
 
         // 如果获取数据的URL已经配置，同时允许自动加载则，加载数据
         if (option.url && option.autoload) {
-            populate(); //访问数据
+			populate(); //访问数据
         }
         else {
-            //否则直接开始输出HTML          
+            //否则直接开始输出HTML
             render();
             //获取时间区间，并添加到时间区间数组中
             var d = getRdate();
@@ -307,14 +300,14 @@
         //输出
         function render() {
             //需要的参数
-            //viewType, showday, events, config			
+            //viewType, showday, events, config
             var showday = new Date(option.showday.getFullYear(), option.showday.getMonth(), option.showday.getDate());
             var events = option.eventItems;
             var config = { view: option.view, weekstartday: option.weekstartday, theme: option.theme };
             if (option.view == "day" || option.view == "week") {
                 var $dvtec = $("#dvtec");
                 if ($dvtec.length > 0) {
-                    option.scoll = $dvtec.attr("scrollTop"); //滚动条的位置
+                    option.scoll = $dvtec[0].scrollTop; //滚动条的位置
                 }
             }
             switch (option.view) {
@@ -386,8 +379,8 @@
             //$("#weekViewAllDaywk").click(RowHandler);
         }
         //构建月视图
-        function BuildMonthView(showday, events, config) {        
-            var html = [];          
+        function BuildMonthView(showday, events, config) {
+            var html = [];
             //build header
             html.push("<div id=\"mvcontainer\" class=\"mv-container\">");
             html.push("<table id=\"mvweek\" class=\"mv-daynames-table\" cellSpacing=\"0\" cellPadding=\"0\"><tbody><tr>");
@@ -412,6 +405,7 @@
         }
         //切分一半的日程后，全天日程（包括跨日）
         function PropareEvents(dayarrs, events, aDE, sDE) {
+
             var l = dayarrs.length;
             var el = events.length;
             var fE = [];
@@ -467,7 +461,7 @@
             var lrdate = dayarrs[l - 1].date;
             for (var i = 0; i < l; i++) { //处理全天和跨日的日程
                 var de = deB[i];
-                if (de.length > 0) { //有日程           
+                if (de.length > 0) { //有日程
                     for (var j = 0; j < de.length; j++) {
                         var end = DateDiff("d", lrdate, de[j].event[3]) > 0 ? lrdate : de[j].event[3];
                         de[j].colSpan = DateDiff("d", dayarrs[i].date, end) + 1
@@ -475,7 +469,7 @@
                 }
                 de = null;
             }
-            //处理单日的日程      
+            //处理单日的日程
             for (var i = 0; i < l; i++) {
                 var de = deA[i];
                 if (de.length > 0) { //存在日程
@@ -507,7 +501,7 @@
                         ge.width = 1 / (ge.PO + 1);
                         ge.left = 1 - ge.width;
                     }
-                    var k = Array.prototype.concat.apply([], D);                  
+                    var k = Array.prototype.concat.apply([], D);
                     x = y = D = null;
                     var t = k.length;
                     for (var y = t; y--; ) {
@@ -556,12 +550,18 @@
                     title = i18n.xgcalendar.to_date_view;
                     cl = "wk-daylink";
                 }
-                ht.push("<th abbr='", dateFormat.call(dayarrs[i].date, i18n.xgcalendar.dateformat.fulldayvalue), "' class='gcweekname' scope=\"col\"><div title='", title, "' ", ev, " class='wk-dayname'><span class='", cl, "'>", dayarrs[i].display, "</span></div></th>");
-
+                if(dateFormat.call(dayarrs[i].date,"yyyyMMdd")==dateFormat.call(new Date(),"yyyyMMdd"))
+                {
+                    ht.push("<th abbr='", dateFormat.call(dayarrs[i].date, i18n.xgcalendar.dateformat.fulldayvalue), "' class='gcweekname gcweek-today' scope=\"col\"><div title='", title, "' ", ev, " class='wk-dayname'><span class='", cl, "'>", dayarrs[i].display, "</span></div></th>");
+                }
+                else
+                {
+                    ht.push("<th abbr='", dateFormat.call(dayarrs[i].date, i18n.xgcalendar.dateformat.fulldayvalue), "' class='gcweekname' scope=\"col\"><div title='", title, "' ", ev, " class='wk-dayname'><span class='", cl, "'>", dayarrs[i].display, "</span></div></th>");
+                }
             }
             ht.push("<th width=\"16\" rowspan=\"3\">&nbsp;</th>");
             ht.push("</tr>"); //end tr1;
-            //2:          
+            //2:
             ht.push("<tr>");
             ht.push("<td class=\"wk-allday\"");
 
@@ -574,7 +574,16 @@
             if (dMax == 0) {
                 ht.push("<tr>");
                 for (var i = 0; i < dayarrs.length; i++) {
-                    ht.push("<td class=\"st-c st-s\"", " ch='qkadd' abbr='", dateFormat.call(dayarrs[i].date, "yyyy-M-d"), "' axis='00:00'>&nbsp;</td>");
+                    //如果是当天的话 价格样式
+                    var sshow = dateFormat.call(dayarrs[i].date, "yyyy-M-d");
+                    if(sshow == dateFormat.call(new Date(), "yyyy-M-d"))
+                    {
+                        ht.push("<td class=\"st-c st-s st-today\"", " ch='qkadd' abbr='", sshow, "' axis='00:00'>&nbsp;</td>");
+                    }
+                    else
+                    {
+                        ht.push("<td class=\"st-c st-s\"", " ch='qkadd' abbr='", sshow, "' axis='00:00'>&nbsp;</td>");
+                    }
                 }
                 ht.push("</tr>");
             }
@@ -838,7 +847,7 @@
 
                 //title tr
                 htb.push("<tr>");
-                var titletemp = "<td class=\"st-dtitle${titleClass}\" ch='qkadd' abbr='${abbr}' axis='00:00' title=\"${title}\"><span class='monthdayshow'>${dayshow}</span></a></td>";
+                var titletemp = "<td class=\"st-dtitle${titleClass}\" ch='qkadd' abbr='${abbr}' axis='00:00' title=\"${title}\"><a href='javascript:void(0);' class='monthdayshow'>${dayshow}</a></td>";
 
                 for (var i = 0; i < 7; i++) {
                     var o = { titleClass: "", dayshow: "" };
@@ -867,7 +876,7 @@
                 htb.push("</tr>");
                 var sfirstday = C[j * 7];
                 BuildMonthRow(htb, formatevents[j], dMax, roweventcount, sfirstday);
-                //htb=htb.concat(rowHtml); rowHtml = null;  
+                //htb=htb.concat(rowHtml); rowHtml = null;
 
                 htb.push("</tbody></table>");
                 //month-row
@@ -1090,7 +1099,6 @@
                 if (option.onBeforeRequestData && $.isFunction(option.onBeforeRequestData)) {
                     option.onBeforeRequestData(1);
                 }
-				
                 var zone = new Date().getTimezoneOffset() / 60 * -1;
                 var param = [
                 { name: "showdate", value: dateFormat.call(option.showday, i18n.xgcalendar.dateformat.fulldayvalue) },
@@ -1107,11 +1115,14 @@
                     type: option.method, //
                     url: option.url,
                     data: param,
-                    //dataType: "text",  // fixed jquery 1.4 not support Ms Date Json Format /Date(@Tickets)/
-                    dataType: "json",
-                    dataFilter: function(data, type) { return data.replace(/"\\\/(Date\([0-9-]+\))\\\/"/gi, "new $1"); },
-                    success: function(data) {//function(datastr) {									
-                       //	debugger;
+                    dataType: "text",  // fixed jquery 1.4 not support Ms Date Json Format /Date(@Tickets)/
+                    //dataType: "json",
+                    //dataFilter: function(data, type) { return data.replace(/"\\\/(Date\([0-9-]+\))\\\/"/gi, "new $1"); },
+                    success://function(data) {
+                        function(datastr){
+                        datastr =datastr.replace(/"\\\/(Date\([0-9-]+\))\\\/"/gi, 'new $1');
+                        var data = (new Function("return " + datastr))();
+                        //debugger;
                         if (data != null && data.error != null) {
                             if (option.onRequestDataError) {
                                 option.onRequestDataError(1, data);
@@ -1289,13 +1300,13 @@
                 "m+":m,
                 "s+":0,
 				"t":h<12?i18n.xgcalendar.dateformat.AM:i18n.xgcalendar.dateformat.PM
-			};              
+			};
             for (var k in o) {
                 if (new RegExp("(" + k + ")").test(f))
                     f = f.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
             }
 			return f;
-			
+
         }
         function getymformat(date, comparedate, isshowtime, isshowweek, showcompare) {
             var showyear = isshowtime != undefined ? (date.getFullYear() != new Date().getFullYear()) : true;
@@ -1411,7 +1422,7 @@
         function parseED(data) {
             if (data.length > 6) {
                 var e = [];
-                e.push(data[0], data[1], new Date(data[2]), new Date(data[3]), parseInt(data[4]), parseInt(data[5]), parseInt(data[6]), data[7] != undefined ? parseInt(data[7]) : -1, data[8] != undefined ? parseInt(data[8]) : 0, data[9], data[10]);
+                e.push(data[0], data[1], new Date(data[2]), new Date(data[3]), parseInt(data[4],10), parseInt(data[5],10), parseInt(data[6],10), data[7] != undefined ? parseInt(data[7],10) : -1, data[8] != undefined ? parseInt(data[8],10) : 0, data[9], data[10]);
                 return e;
             }
             return null;
@@ -1465,7 +1476,7 @@
             }
             if (data != null) {
                 if (option.quickDeleteUrl != "" && data[8] == 1 && option.readonly != true) {
-                    var csbuddle = '<div id="bbit-cs-buddle" style="z-index: 180; width: 400px;visibility:hidden;" class="bubble"><table class="bubble-table" cellSpacing="0" cellPadding="0"><tbody><tr><td class="bubble-cell-side"><div id="tl1" class="bubble-corner"><div class="bubble-sprite bubble-tl"></div></div><td class="bubble-cell-main"><div class="bubble-top"></div><td class="bubble-cell-side"><div id="tr1" class="bubble-corner"><div class="bubble-sprite bubble-tr"></div></div>  <tr><td class="bubble-mid" colSpan="3"><div style="overflow: hidden" id="bubbleContent1"><div><div></div><div class="cb-root"><table class="cb-table" cellSpacing="0" cellPadding="0"><tbody><tr><td class="cb-value"><div class="textbox-fill-wrapper"><div class="textbox-fill-mid"><div id="bbit-cs-what" title="'
+                    var csbuddle = '<div id="bbit-cs-buddle" style="z-index: 990; width: 400px;visibility:hidden;" class="bubble"><table class="bubble-table" cellSpacing="0" cellPadding="0"><tbody><tr><td class="bubble-cell-side"><div id="tl1" class="bubble-corner"><div class="bubble-sprite bubble-tl"></div></div><td class="bubble-cell-main"><div class="bubble-top"></div><td class="bubble-cell-side"><div id="tr1" class="bubble-corner"><div class="bubble-sprite bubble-tr"></div></div>  <tr><td class="bubble-mid" colSpan="3"><div style="overflow: hidden" id="bubbleContent1"><div><div></div><div class="cb-root"><table class="cb-table" cellSpacing="0" cellPadding="0"><tbody><tr><td class="cb-value"><div class="textbox-fill-wrapper"><div class="textbox-fill-mid"><div id="bbit-cs-what" title="'
                     	+ i18n.xgcalendar.click_to_detail + '" class="textbox-fill-div lk" style="cursor:pointer;"></div></div></div></td></tr><tr><td class=cb-value><div id="bbit-cs-buddle-timeshow"></div></td></tr></tbody></table><div class="bbit-cs-split"><input id="bbit-cs-id" type="hidden" value=""/>[ <span id="bbit-cs-delete" class="lk">'
                     	+ i18n.xgcalendar.i_delete + '</span> ]&nbsp; <SPAN id="bbit-cs-editLink" class="lk">'
                     	+ i18n.xgcalendar.update_detail + ' <StrONG>»</StrONG></SPAN></div></div></div></div><tr><td><div id="bl1" class="bubble-corner"><div class="bubble-sprite bubble-bl"></div></div><td><div class="bubble-bottom"></div><td><div id="br1" class="bubble-corner"><div class="bubble-sprite bubble-br"></div></div></tr></tbody></table><div id="bubbleClose2" class="bubble-closebutton"></div><div id="prong1" class="prong"><div class=bubble-sprite></div></div></div>';
@@ -1573,7 +1584,7 @@
             return false;
         }
 
-        function moreshow(mv) {			
+        function moreshow(mv) {
             var me = $(this);
             var divIndex = mv.id.split('_')[1];
             var pdiv = $(mv);
@@ -1584,17 +1595,20 @@
             var left = offsetMe.left;
 
             var daystr = this.abbr;
-            var arrdays = daystr.split(i18n.xgcalendar.dateformat.separator);
-            var day = new Date(arrdays[0], parseInt(arrdays[1] - 1), arrdays[2]);
+
+            var format =i18n.xgcalendar.dateformat;
+            var arrdays = daystr.split(format.separator);
+
+            var day = new Date(arrdays[format.year_index], parseInt(arrdays[format.month_index] - 1,10), arrdays[format.day_index]);
             var cc = $("#cal-month-cc");
             var ccontent = $("#cal-month-cc-content table tbody");
             var ctitle = $("#cal-month-cc-title");
-            ctitle.html(dateFormat.call(day, i18n.xgcalendar.dateformat.Md3) + " " + __WDAY[day.getDay()]);
+            ctitle.html(dateFormat.call(day,format.Md3) + " " + __WDAY[day.getDay()]);
             ccontent.empty();
             //var c = tc()[2];
             var edata = $("#gridEvent").data("mvdata");
             var events = edata[divIndex];
-            var index = parseInt(this.axis);
+            var index = parseInt(this.axis,10);
             var htm = [];
             for (var i = 0; i <= index; i++) {
                 var ec = events[i] ? events[i].length : 0;
@@ -1616,7 +1630,7 @@
             });
 
             edata = events = null;
-			
+
             var height = cc.height();
             var maxleft = document.documentElement.clientWidth;
             var maxtop = document.documentElement.clientHeight;
@@ -1630,7 +1644,7 @@
 			{
 				left =10;
 			}
-            var newOff = { left: left, top: top, "z-index": 180, width: width, "display": "block" };
+            var newOff = { left: left, top: top, "z-index": 990, width: width, "display": "block" };
             cc.css(newOff);
             $(document).one("click", closeCc);
             return false;
@@ -1665,7 +1679,7 @@
                             else {
                                 option.onRequestDataError && option.onRequestDataError(4, data);
                                 option.isloading = false;
-                                //还原数据，重画										
+                                //还原数据，重画
                                 d = rebyKey(id, true);
                                 d[2] = os;
                                 d[3] = od;
@@ -1676,7 +1690,7 @@
                             }
                         }
                     }, "json");
-                    //更新数据重画						
+                    //更新数据重画
                     d = rebyKey(id, true);
                     if (d) {
                         d[2] = start;
@@ -1694,7 +1708,7 @@
             var buddle = $("#bbit-cal-buddle");
             if (buddle.length == 0) {
                 var temparr = [];
-                temparr.push('<div id="bbit-cal-buddle" style="z-index: 180; width: 400px;visibility:hidden;" class="bubble">');
+                temparr.push('<div id="bbit-cal-buddle" style="z-index: 990; width: 400px;visibility:hidden;" class="bubble">');
                 temparr.push('<table class="bubble-table" cellSpacing="0" cellPadding="0"><tbody><tr><td class="bubble-cell-side"><div id="tl1" class="bubble-corner"><div class="bubble-sprite bubble-tl"></div></div>');
                 temparr.push('<td class="bubble-cell-main"><div class="bubble-top"></div><td class="bubble-cell-side"><div id="tr1" class="bubble-corner"><div class="bubble-sprite bubble-tr"></div></div>  <tr><td class="bubble-mid" colSpan="3"><div style="overflow: hidden" id="bubbleContent1"><div><div></div><div class="cb-root">');
                 temparr.push('<table class="cb-table" cellSpacing="0" cellPadding="0"><tbody><tr><th class="cb-key">');
@@ -1755,7 +1769,7 @@
                         $.post(option.quickAddUrl, param, function(data) {
                             if (data) {
                                 if (data.IsSuccess == true) {
-								
+
                                     option.isloading = false;
                                     option.eventItems[tId][0] = data.Data;
                                     option.eventItems[tId][8] = 1;
@@ -1778,7 +1792,7 @@
                         var diff = DateDiff("d", sd, ed);
                         newdata.push(sd, ed, allday == "1" ? 1 : 0, diff > 0 ? 1 : 0, 0);
                         newdata.push(-1, 0, "", ""); //主题,权限,参与人，
-						
+
                         tId = Ind(newdata);
                         realsedragevent();
                         render();
@@ -1814,7 +1828,7 @@
             $("#bbit-cal-start").val(dateFormat.call(start, i18n.xgcalendar.dateformat.fulldayvalue + " HH:mm"));
             $("#bbit-cal-end").val(dateFormat.call(end, i18n.xgcalendar.dateformat.fulldayvalue + " HH:mm"));
             buddle.css({ "visibility": "visible", left: off.left, top: off.top });
-            calwhat.blur().focus(); //add 2010-01-26 blur() fixed chrome 
+            calwhat.blur().focus(); //add 2010-01-26 blur() fixed chrome
             $(document).one("mousedown", function() {
                 $("#bbit-cal-buddle").css("visibility", "hidden");
                 realsedragevent();
@@ -1833,7 +1847,7 @@
             var d = arr2[i18n.xgcalendar.dateformat.day_index].indexOf("0") == 0 ? arr2[i18n.xgcalendar.dateformat.day_index].substr(1, 1) : arr2[i18n.xgcalendar.dateformat.day_index];
             var h = arr3[0].indexOf("0") == 0 ? arr3[0].substr(1, 1) : arr3[0];
             var n = arr3[1].indexOf("0") == 0 ? arr3[1].substr(1, 1) : arr3[1];
-            return new Date(y, parseInt(m) - 1, d, h, n);
+            return new Date(y, parseInt(m,10) - 1, d, h, n);
         }
 
         function rebyKey(key, remove) {
@@ -1926,19 +1940,21 @@
                     var h = currentday.getHours();
                     var m = currentday.getMinutes();
                     var th = gP(h, m);
-                    var ch = $dvtec.attr("clientHeight");
+                    var ch = $dvtec[0].clientHeight;
                     var sh = th - 0.5 * ch;
-                    var ph = $dvtec.attr("scrollHeight");
+                    var ph = $dvtec[0].scrollHeight;
                     if (sh < 0) sh = 0;
                     if (sh > ph - ch) sh = ph - ch - 10 * (23 - h);
-                    $dvtec.attr("scrollTop", sh);
+                    $dvtec[0].scrollTop = sh;
+
                 }
                 else {
-                    $dvtec.attr("scrollTop", option.scoll);
+                    $dvtec[0].scrollTop = option.scoll;
+
                 }
             }
 			/*
-            else if (_viewType == "month") {  
+            else if (_viewType == "month") {
             }
 			*/
         }
@@ -1952,7 +1968,7 @@
                     chip.click(dayshow);
                     if (chip.hasClass("drag")) {
                         chip.mousedown(function(e) { dragStart.call(this, "dw3", e); return false; });
-                        //resize                      
+                        //resize
                         chip.find("div.resizer").mousedown(function(e) {
                             dragStart.call($(this).parent().parent(), "dw4", e); return false;
                         });
@@ -2009,6 +2025,12 @@
                 if (option.readonly == false) {
                     $("#mvEventContainer").mousedown(function(e) { dragStart.call(this, "m1", e); return false; });
                 }
+				else
+				{
+					 $("#mvEventContainer span.monthdayshow").each(function(e){
+						$(this).click(function(e2){    weekormonthtoday.call($(this).parent()[0], e2); });
+					 });
+				}
             }
 
         }
@@ -2034,7 +2056,7 @@
                     var top = offset.top;
                     var l = option.view == "day" ? 1 : 7;
                     var py = w % l;
-                    var pw = parseInt(w / l);
+                    var pw = parseInt(w / l,10);
                     //每个单元格的宽度
                     if (py > l / 2 + 1) {
                         pw++;
@@ -2057,7 +2079,7 @@
                     var data = getdata(obj);
                     _dragdata = { type: 4, target: obj, sx: e.pageX, sy: e.pageY,
                         pXMin: pos.left, pXMax: pos.left + w, pw: w, h: h,
-                        cdi: parseInt(evid), fdi: parseInt(evid), data: data
+                        cdi: parseInt(evid,10), fdi: parseInt(evid,10), data: data
                     };
                     break;
                 case "dw4": //resize;
@@ -2165,7 +2187,7 @@
                     _dragdata = { type: 7, target: obj, sx: e.pageX, sy: e.pageY, data: data, xa: xa, ya: ya, fdi: fdi, h: h, dp: dp, pw: pw };
                     break;
             }
-            $('body').noSelect();
+            //$('body').noSelect();
         }
         function dragMove(e) {
             if (_dragdata) {
@@ -2422,7 +2444,7 @@
             if (_dragdata) {
                 var d = _dragdata;
                 switch (d.type) {
-                    case 1: //选择单日的时间段来添加日程				
+                    case 1: //选择单日的时间段来添加日程
                         var wrapid = new Date().getTime();
                         tp = d.target.offset().top;
                         if (!d.cpwrap) {
@@ -2442,7 +2464,7 @@
                         quickadd(start, end, false, pos);
                         break;
                     case 2: //周日视图添加日程
-                    case 3: //月视图添加日程					
+                    case 3: //月视图添加日程
                         var source = e.srcElement || e.target;
                         var lassoid = new Date().getTime();
                         if (!d.lasso) {
@@ -2515,7 +2537,7 @@
                         break;
                 }
                 d = _dragdata = null;
-                $('body').noSelect(false);
+                //$('body').noSelect(false);
                 return false;
             }
         }
@@ -2607,10 +2629,10 @@
         $(document)
 		.mousemove(dragMove)
 		.mouseup(dragEnd);
-        //.mouseout(dragEnd); //移出页面则拖动事件停止	
+        //.mouseout(dragEnd); //移出页面则拖动事件停止
 
         var c = {
-            sv: function(view) { //视图切换                
+            sv: function(view) { //视图切换
                 if (view == option.view) {
                     return;
                 }
