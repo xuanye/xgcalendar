@@ -18,16 +18,16 @@ prev version： [http://xgcal.sinaapp.com/demo/](http://xgcal.sinaapp.com/demo/ 
   
   * Day/week/month view provided. 
   * Support the definition of the start date of the week 
-  * get and update data by ajax 
-  * create/update/remove events by drag & drop 
-  * qucik delete 
-  * quick update by drag/drop 
-  * update event by Resize
-  * rigth control
-  * theme 
+  * Get and update data by ajax 
+  * Create/update/remove events by drag & drop 
+  * Quick delete 
+  * Quick update by drag/drop 
+  * Update event by Resize
+  * Permission control
+  * Theme 
   * Good performance
-  * i18n
-  * support IE6+,FireFox3?.5+,Opera 10+,Chrome 3+ 
+  * I18n
+  * Support IE6+,FireFox3?.5+,Opera 10+,Chrome 3+ 
 
 
 ## Usage
@@ -67,14 +67,14 @@ javascript :
 
 ## Options
 - `view`:  default view type `day`,`week`,`month` 
-- `weekstartday`: First day of week,0 for sunday,`[0-6]` ,default value is `1`
-- `theme`: default color style, `[0-21]`,default value is `0`
+- `weekstartday`: First day of week, 0 for sunday, `[0-6]`, default value is `1`
+- `theme`: default color style, `[0-21]`, default value is `0`
 - `height`: set calendar view height，or it will be set  document.body.Height
 - `url`:  **require**  load data url        
-- `eventItems`: events data,it a array,you can use it to init events data;
-- `method`: request mode,default value `post`
-- `showday`: show date,default value `new Date()`
-- `onBeforeRequestData`: event on before request data,include `load`,`add`,`update`,`delete`
+- `eventItems`: events data, it an array, you can use it to init events data
+- `method`: request mode, default value `post`
+- `showday`: show date, default value `new Date()`
+- `onBeforeRequestData`: event on before request data, include `load`, `add`, `update`, `delete`
 - `onAfterRequestData`: event on after request data,
 - `onRequestDataError`: event on error occurs   
 - `onWeekOrMonthToDay`: when weekview or month switch to dayview
@@ -82,12 +82,12 @@ javascript :
 - `quickAddUrl`: url for quick add event data by ajax request(post)
 - `quickUpdateUrl`: url for quick update event data by ajax request(post)
 - `quickDeleteUrl`: url for quick delete event data by ajax request(post)       
-- `autoload`: if set to `true` , auto load event datas after initialization
-- `readonly`: if set to `true` ,control will be readonly, 
+- `autoload`: if set to `true`, auto load event datas after initialization
+- `readonly`: if set to `true`, control will be readonly, 
 - `extParam`: other params what will be post to sever side when add,update
 - `enableDrag`:
-- `timeFormat`:default value：`HH:mm`, t is  a PM/AM switch,h 12 hours，H 24hours,m 
-- `tgtimeFormat`:"HH:mm" 
+- `timeFormat`:default value：`HH:mm`, t is a PM/AM switch, h 12 hours，H 24hours, m 
+- `tgtimeFormat`: "HH:mm" 
 
 ## Data format
 
@@ -127,12 +127,12 @@ All methods can be call like `$("#calendarid").functionName(params) `
 `events`: data format is same to `eventItems`.
 `issort`: Whether sorted,should be true.
 `start` and `end`:current view date range, json date format.
-`error`:object, format：`{ErrorCode:””,ErrorMsg:””}` ,handler by `onRequestDataError`。
+`error`:object, format：`{ErrorCode:””,ErrorMsg:””}` ,handler by `onRequestDataError`.
 
 ####Updating Params
 **request data sample** 
 >calendarId=98&CalendarStartTime=2013-1-2+00%3A00&CalendarEndTime=2013-1-2+00%3A00&timezone=8   
-时间的数据格式由你的多语言配置决定  
+Date and time is formated according to your multi-language configuration choice.
 **response data sample**﻿
 > {"IsSuccess":true,"Msg":""}  
 
