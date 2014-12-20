@@ -38,7 +38,7 @@ html :
 
 include js:
 
-    <script src="static/js/plugin/xgcalendar_lang_en_US.js" type="text/javascript"></script>  
+    <script src="static/js/locales/xgcalendar_lang_en_US.js" type="text/javascript"></script>
     <script src="static/js/plugin/xgcalendar.js?v=1.2.0.4" type="text/javascript"></script>   
 
 javascript :
