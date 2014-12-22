@@ -36,7 +36,7 @@ xgcalendar
 
 引入JS: 其中xgcalendar_lang_zh_CN.js为本地化文件，xgcalendar支持多语言
 
-    <script src="static/js/plugin/xgcalendar_lang_zh_CN.js" type="text/javascript"></script>  
+    <script src="static/js/locales/xgcalendar_lang_zh_CN.js" type="text/javascript"></script>
     <script src="static/js/plugin/xgcalendar.js?v=1.2.0.4" type="text/javascript"></script>   
 
 调用 :
