@@ -8,7 +8,7 @@ Desktop.ini
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
 
-#hexo
+
 .DS_Store
 node_modules
 *.sublime-project
