@@ -44,7 +44,7 @@
                 "w": "0123456".indexOf(this.getDay()),
 				"t":this.getHours()<12?i18n.xgcalendar.dateformat.AM:i18n.xgcalendar.dateformat.PM,
                 "W": __WDAY[this.getDay()],
-                "L": __MonthName[this.getMonth()] //non-standard
+                "\\bL\\b": __MonthName[this.getMonth()] //non-standard
             };
             if (/(y+)/.test(format)) {
                 format = format.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
