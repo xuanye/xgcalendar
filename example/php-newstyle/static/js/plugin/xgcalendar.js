@@ -229,74 +229,74 @@
             return { start: option.vstart, end: option.vend };
         }
         //添加到已获取数据的时间段内
-        function pushER(start, end) {
-            var ll = option.loadDateR.length;
-            if (!end) {
-                end = start;
-            }
-            if (ll == 0) {
-                option.loadDateR.push({ startdate: start, enddate: end });
-            }
-            else {
-                for (var i = 0; i < ll; i++) {
-                    var dr = option.loadDateR[i];
-                    var diff = DateDiff("d", start, dr.startdate);
-                    if (diff == 0 || diff == 1) {
-                        if (dr.enddate < end) {
-                            dr.enddate = end;
-                        }
-                        break;
-                    }
-                    else if (diff > 1) {
-                        var d2 = DateDiff("d", end, dr.startdate);
-                        if (d2 > 1) {
-                            option.loadDateR.splice(0, 0, { startdate: start, enddate: end });
-                        }
-                        else {
-                            dr.startdate = start;
-                            if (dr.enddate < end) {
-                                dr.enddate = end;
-                            }
-                        }
-                        break;
-                    }
-                    else {
-                        var d3 = DateDiff("d", end, dr.startdate);
+		function pushER(start, end) {
+		    var ll = option.loadDateR.length;
+		    if (!end) {
+		        end = start;
+		    }
+		    if (ll == 0) {
+		        option.loadDateR.push({ startdate: start, enddate: end });
+		    }
+		    else {
+		        for (var i = 0; i < ll; i++) {
+		            var dr = option.loadDateR[i];
+		            var diff = DateDiff("d", start, dr.startdate);           
+		            if (diff == 0 || diff == 1) {
+		                if (dr.enddate < end) {
+		                    dr.enddate = end;
+		                }
+		                break;
+		            }
+		            else if (diff > 1) {
+		                var d2 = DateDiff("d", end, dr.startdate);
+		                if (d2 > 1) {
+		                    option.loadDateR.splice(i, 0, { startdate: start, enddate: end });
+		                }
+		                else {
+		                    dr.startdate = start;
+		                    if (dr.enddate < end) {
+		                        dr.enddate = end;
+		                    }
+		                }
+		                break;
+		            }
+		            else {
+		                var d3 = DateDiff("d", start, dr.enddate);  				
+		                if (dr.enddate < end) {
+		                    if (d3 >0) {
+		                        dr.enddate = end;
+		                        break;
+		                    }
+		                    else {
+		                        if (i == ll - 1) {
+		                             option.loadDateR.push({ startdate: start, enddate: end });
+		                        }
+		                    }
+		                }
+		            }
+		        }
+		        //end for
+		    
+		        //clear
+		        ll = option.loadDateR.length;
+		        if (ll > 1) {
+		            for (var i = 0; i < ll - 1; ) {
+		                var d1 = option.loadDateR[i];
+		                var d2 = option.loadDateR[i + 1];
 
-                        if (dr.enddate < end) {
-                            if (d3 < 1) {
-                                dr.enddate = end;
-                                break;
-                            }
-                            else {
-                                if (i == ll - 1) {
-                                    option.loadDateR.push({ startdate: start, enddate: end });
-                                }
-                            }
-                        }
-                    }
-                }
-                //end for
-                //clear
-                ll = option.loadDateR.length;
-                if (ll > 1) {
-                    for (var i = 0; i < ll - 1; ) {
-                        var d1 = option.loadDateR[i];
-                        var d2 = option.loadDateR[i + 1];
-
-                        var diff1 = DateDiff("d", d2.startdate, d1.enddate);
-                        if (diff1 <= 1) {
-                            d1.startdate = d2.startdate > d1.startdate ? d1.startdate : d2.startdate;
-                            d1.enddate = d2.enddate > d1.enddate ? d2.enddate : d1.enddate;
-                            option.loadDateR.splice(i + 1, 1);
-                            ll--;
-                            continue;
-                        }
-                        i++;
-                    }
-                }
-            }
-        }
+		                var diff1 = DateDiff("d", d1.enddate, d2.startdate);
+		                if (diff1 <= 1) {
+		                    d1.startdate = d2.startdate > d1.startdate ? d1.startdate : d2.startdate;
+		                    d1.enddate = d2.enddate > d1.enddate ? d2.enddate : d1.enddate;
+		                    option.loadDateR.splice(i + 1, 1);
+		                    ll--;
+		                    continue;
+		                }
+		                i++;
+		            }
+		        }
+		    }
+		}
         //输出
         function render() {
             //需要的参数

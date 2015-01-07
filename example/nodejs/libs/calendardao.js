@@ -4,8 +4,8 @@ function GetConnection(usecusformat)
 {
     var db = mysql.createConnection({
         host     : "localhost",
-        user     : "root",
-        password : "cjchnws",
+        user     : "xgcalendar",
+        password : "xgcalendar@123",
         database : "xgcalendar"
     })
     if(usecusformat)
