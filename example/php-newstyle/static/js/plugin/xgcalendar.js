@@ -56,7 +56,7 @@
             return format;
         };
     }
-    if (!DateAdd || typeof (DateDiff) != "function") {
+    if (!DateAdd || typeof (DateAdd) != "function") {
         var DateAdd = function(interval, number, idate) {
             number = parseInt(number,10);
             var date;
