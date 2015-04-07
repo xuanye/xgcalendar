@@ -1091,6 +1091,7 @@
         //发起ajax请求
         function populate() {
             if (option.isloading) {
+                option.showday_busy = option.showday;
                 return true;
             }
             if (option.url && option.url != "") {
@@ -1136,6 +1137,12 @@
                             option.onAfterRequestData(1);
                         }
                         option.isloading = false;
+                        if (option.showday_busy) {
+                            // Last populate() was canceled because the ajax was busy: do it now.
+                            option.showday = option.showday_busy;
+                            option.showday_busy = null;
+                            populate();
+                        }
                     },
                     error: function(data) {
                         try {
@@ -1149,6 +1156,12 @@
                             }
                             option.isloading = false;
                         } catch (e) { }
+                        if (option.showday_busy) {
+                            // Last populate() was canceled because the ajax was busy: do it now.
+                            option.showday = option.showday_busy;
+                            option.showday_busy = null;
+                            populate();
+                        }
                     }
                 });
             }
