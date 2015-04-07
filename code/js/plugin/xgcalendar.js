@@ -42,7 +42,7 @@
                 "s+": this.getSeconds(),
                 "q+": Math.floor((this.getMonth() + 3) / 3),
                 "w": "0123456".indexOf(this.getDay()),
-				"t":this.getHours()<12?i18n.xgcalendar.dateformat.AM:i18n.xgcalendar.dateformat.PM,
+                "t":this.getHours()<12?i18n.xgcalendar.dateformat.AM:i18n.xgcalendar.dateformat.PM,
                 "W": __WDAY[this.getDay()],
                 "\\bL\\b": __MonthName[this.getMonth()] //non-standard
             };
@@ -169,8 +169,8 @@
             extParam: [], //额外参数，在所以异步请求中，都会附加的额外参数，可配置其他扩展的查询条件
             enableDrag: true, //是否可拖拽
             loadDateR: [], //记录已加载过的日程的时间段
-			timeFormat:" HH:mm", //t表示上午下午标识,h 表示12小时制的小时，H表示24小时制的小时,m表示分钟
-			tgtimeFormat:"HH:mm" //同上
+            timeFormat:" HH:mm", //t表示上午下午标识,h 表示12小时制的小时，H表示24小时制的小时,m表示分钟
+            tgtimeFormat:"HH:mm" //同上
         };
         var eventDiv = $("#gridEvent");
         if (eventDiv.length == 0) {
@@ -178,11 +178,11 @@
         }
 
         var cc = $("#cal-month-cc");
-	    if (cc.length == 0) {
+        if (cc.length == 0) {
            $( "<div id='cal-month-cc' class='cc'><div id='cal-month-cc-header'><div class='cc-close' id='cal-month-closebtn'></div><div id='cal-month-cc-title' class='cc-title'></div></div><div id='cal-month-cc-body' class='cc-body'><div id='cal-month-cc-content' class='st-contents'><table class='st-grid' cellSpacing='0' cellPadding='0'><tbody></tbody></table></div></div></div>").appendTo(document.body);
         }
-		cc=null;
-		var gridcontainer = $(this);
+        cc=null;
+        var gridcontainer = $(this);
         gridcontainer.css("position","relative");
         option = $.extend(def, option);
         //如果快速更新链接陪游配置，则快速新增不能实现
@@ -210,7 +210,7 @@
 
         // 如果获取数据的URL已经配置，同时允许自动加载则，加载数据
         if (option.url && option.autoload) {
-			populate(); //访问数据
+            populate(); //访问数据
         }
         else {
             //否则直接开始输出HTML
@@ -229,74 +229,74 @@
             return { start: option.vstart, end: option.vend };
         }
         //添加到已获取数据的时间段内
-		function pushER(start, end) {
-		    var ll = option.loadDateR.length;
-		    if (!end) {
-		        end = start;
-		    }
-		    if (ll == 0) {
-		        option.loadDateR.push({ startdate: start, enddate: end });
-		    }
-		    else {
-		        for (var i = 0; i < ll; i++) {
-		            var dr = option.loadDateR[i];
-		            var diff = DateDiff("d", start, dr.startdate);           
-		            if (diff == 0 || diff == 1) {
-		                if (dr.enddate < end) {
-		                    dr.enddate = end;
-		                }
-		                break;
-		            }
-		            else if (diff > 1) {
-		                var d2 = DateDiff("d", end, dr.startdate);
-		                if (d2 > 1) {
-		                    option.loadDateR.splice(i, 0, { startdate: start, enddate: end });
-		                }
-		                else {
-		                    dr.startdate = start;
-		                    if (dr.enddate < end) {
-		                        dr.enddate = end;
-		                    }
-		                }
-		                break;
-		            }
-		            else {
-		                var d3 = DateDiff("d", start, dr.enddate);  				
-		                if (dr.enddate < end) {
-		                    if (d3 >0) {
-		                        dr.enddate = end;
-		                        break;
-		                    }
-		                    else {
-		                        if (i == ll - 1) {
-		                             option.loadDateR.push({ startdate: start, enddate: end });
-		                        }
-		                    }
-		                }
-		            }
-		        }
-		        //end for
-		    
-		        //clear
-		        ll = option.loadDateR.length;
-		        if (ll > 1) {
-		            for (var i = 0; i < ll - 1; ) {
-		                var d1 = option.loadDateR[i];
-		                var d2 = option.loadDateR[i + 1];
+        function pushER(start, end) {
+            var ll = option.loadDateR.length;
+            if (!end) {
+                end = start;
+            }
+            if (ll == 0) {
+                option.loadDateR.push({ startdate: start, enddate: end });
+            }
+            else {
+                for (var i = 0; i < ll; i++) {
+                    var dr = option.loadDateR[i];
+                    var diff = DateDiff("d", start, dr.startdate);           
+                    if (diff == 0 || diff == 1) {
+                        if (dr.enddate < end) {
+                            dr.enddate = end;
+                        }
+                        break;
+                    }
+                    else if (diff > 1) {
+                        var d2 = DateDiff("d", end, dr.startdate);
+                        if (d2 > 1) {
+                            option.loadDateR.splice(i, 0, { startdate: start, enddate: end });
+                        }
+                        else {
+                            dr.startdate = start;
+                            if (dr.enddate < end) {
+                                dr.enddate = end;
+                            }
+                        }
+                        break;
+                    }
+                    else {
+                        var d3 = DateDiff("d", start, dr.enddate);                  
+                        if (dr.enddate < end) {
+                            if (d3 >0) {
+                                dr.enddate = end;
+                                break;
+                            }
+                            else {
+                                if (i == ll - 1) {
+                                     option.loadDateR.push({ startdate: start, enddate: end });
+                                }
+                            }
+                        }
+                    }
+                }
+                //end for
+            
+                //clear
+                ll = option.loadDateR.length;
+                if (ll > 1) {
+                    for (var i = 0; i < ll - 1; ) {
+                        var d1 = option.loadDateR[i];
+                        var d2 = option.loadDateR[i + 1];
 
-		                var diff1 = DateDiff("d", d1.enddate, d2.startdate);
-		                if (diff1 <= 1) {
-		                    d1.startdate = d2.startdate > d1.startdate ? d1.startdate : d2.startdate;
-		                    d1.enddate = d2.enddate > d1.enddate ? d2.enddate : d1.enddate;
-		                    option.loadDateR.splice(i + 1, 1);
-		                    ll--;
-		                    continue;
-		                }
-		                i++;
-		            }
-		        }
-		    }
-		}
+                        var diff1 = DateDiff("d", d1.enddate, d2.startdate);
+                        if (diff1 <= 1) {
+                            d1.startdate = d2.startdate > d1.startdate ? d1.startdate : d2.startdate;
+                            d1.enddate = d2.enddate > d1.enddate ? d2.enddate : d1.enddate;
+                            option.loadDateR.splice(i + 1, 1);
+                            ll--;
+                            continue;
+                        }
+                        i++;
+                    }
+                }
+            }
+        }
         //输出
         function render() {
             //需要的参数
@@ -1103,7 +1103,7 @@
                 var param = [
                 { name: "showdate", value: dateFormat.call(option.showday, i18n.xgcalendar.dateformat.fulldayvalue) },
                 { name: "viewtype", value: option.view },
-				 { name: "timezone", value: zone }
+                 { name: "timezone", value: zone }
                 ];
                 if (option.extParam) {
                     for (var pi = 0; pi < option.extParam.length; pi++) {
@@ -1294,18 +1294,18 @@
             return temp.replace(/\{([\d])\}/g, function(s1, s2) { var s = dataarry[s2]; if (typeof (s) != "undefined") { return encodeURIComponent(s); } else { return ""; } });
         }
         function fomartTimeShow(h,m,f) {
-			var o={
-			    "h+":h>12?h-12:h,
+            var o={
+                "h+":h>12?h-12:h,
                 "H+":h,
                 "m+":m,
                 "s+":0,
-				"t":h<12?i18n.xgcalendar.dateformat.AM:i18n.xgcalendar.dateformat.PM
-			};
+                "t":h<12?i18n.xgcalendar.dateformat.AM:i18n.xgcalendar.dateformat.PM
+            };
             for (var k in o) {
                 if (new RegExp("(" + k + ")").test(f))
                     f = f.replace(RegExp.$1, RegExp.$1.length == 1 ? o[k] : ("00" + o[k]).substr(("" + o[k]).length));
             }
-			return f;
+            return f;
 
         }
         function getymformat(date, comparedate, isshowtime, isshowweek, showcompare) {
@@ -1318,9 +1318,9 @@
                 showyear = comparedate.getFullYear() != date.getFullYear();
                 //showmonth = comparedate.getFullYear() != date.getFullYear() || date.getMonth() != comparedate.getMonth();
                 if (comparedate.getFullYear() == date.getFullYear() &&
-					date.getMonth() == comparedate.getMonth() &&
-					date.getDate() == comparedate.getDate()
-					) {
+                    date.getMonth() == comparedate.getMonth() &&
+                    date.getDate() == comparedate.getDate()
+                    ) {
                     showyear = showmonth = showday = showweek = false;
                 }
             }
@@ -1477,9 +1477,9 @@
             if (data != null) {
                 if (option.quickDeleteUrl != "" && data[8] == 1 && option.readonly != true) {
                     var csbuddle = '<div id="bbit-cs-buddle" style="z-index: 990; width: 400px;visibility:hidden;" class="bubble"><table class="bubble-table" cellSpacing="0" cellPadding="0"><tbody><tr><td class="bubble-cell-side"><div id="tl1" class="bubble-corner"><div class="bubble-sprite bubble-tl"></div></div><td class="bubble-cell-main"><div class="bubble-top"></div><td class="bubble-cell-side"><div id="tr1" class="bubble-corner"><div class="bubble-sprite bubble-tr"></div></div>  <tr><td class="bubble-mid" colSpan="3"><div style="overflow: hidden" id="bubbleContent1"><div><div></div><div class="cb-root"><table class="cb-table" cellSpacing="0" cellPadding="0"><tbody><tr><td class="cb-value"><div class="textbox-fill-wrapper"><div class="textbox-fill-mid"><div id="bbit-cs-what" title="'
-                    	+ i18n.xgcalendar.click_to_detail + '" class="textbox-fill-div lk" style="cursor:pointer;"></div></div></div></td></tr><tr><td class=cb-value><div id="bbit-cs-buddle-timeshow"></div></td></tr></tbody></table><div class="bbit-cs-split"><input id="bbit-cs-id" type="hidden" value=""/>[ <span id="bbit-cs-delete" class="lk">'
-                    	+ i18n.xgcalendar.i_delete + '</span> ]&nbsp; <SPAN id="bbit-cs-editLink" class="lk">'
-                    	+ i18n.xgcalendar.update_detail + ' <StrONG>»</StrONG></SPAN></div></div></div></div><tr><td><div id="bl1" class="bubble-corner"><div class="bubble-sprite bubble-bl"></div></div><td><div class="bubble-bottom"></div><td><div id="br1" class="bubble-corner"><div class="bubble-sprite bubble-br"></div></div></tr></tbody></table><div id="bubbleClose2" class="bubble-closebutton"></div><div id="prong1" class="prong"><div class=bubble-sprite></div></div></div>';
+                        + i18n.xgcalendar.click_to_detail + '" class="textbox-fill-div lk" style="cursor:pointer;"></div></div></div></td></tr><tr><td class=cb-value><div id="bbit-cs-buddle-timeshow"></div></td></tr></tbody></table><div class="bbit-cs-split"><input id="bbit-cs-id" type="hidden" value=""/>[ <span id="bbit-cs-delete" class="lk">'
+                        + i18n.xgcalendar.i_delete + '</span> ]&nbsp; <SPAN id="bbit-cs-editLink" class="lk">'
+                        + i18n.xgcalendar.update_detail + ' <StrONG>»</StrONG></SPAN></div></div></div></div><tr><td><div id="bl1" class="bubble-corner"><div class="bubble-sprite bubble-bl"></div></div><td><div class="bubble-bottom"></div><td><div id="br1" class="bubble-corner"><div class="bubble-sprite bubble-br"></div></div></tr></tbody></table><div id="bubbleClose2" class="bubble-closebutton"></div><div id="prong1" class="prong"><div class=bubble-sprite></div></div></div>';
                     var bud = $("#bbit-cs-buddle");
                     if (bud.length == 0) {
                         bud = $(csbuddle).appendTo(document.body);
@@ -1640,10 +1640,10 @@
             if (top + height >= maxtop) {
                 top = maxtop - height - 10;
             }
-			if(left ==0)
-			{
-				left =10;
-			}
+            if(left ==0)
+            {
+                left =10;
+            }
             var newOff = { left: left, top: top, "z-index": 990, width: width, "display": "block" };
             cc.css(newOff);
             $(document).one("click", closeCc);
@@ -1660,10 +1660,10 @@
                 var od = data[3];
                 var zone = new Date().getTimezoneOffset() / 60 * -1;
                 var param = [{ "name": "calendarId", value: id },
-							{ "name": "CalendarStartTime", value: dateFormat.call(start, i18n.xgcalendar.dateformat.fulldayvalue + " HH:mm") },
-							{ "name": "CalendarEndTime", value: dateFormat.call(end, i18n.xgcalendar.dateformat.fulldayvalue + " HH:mm") },
-							{ "name": "timezone", value: zone }
-						   ];
+                            { "name": "CalendarStartTime", value: dateFormat.call(start, i18n.xgcalendar.dateformat.fulldayvalue + " HH:mm") },
+                            { "name": "CalendarEndTime", value: dateFormat.call(end, i18n.xgcalendar.dateformat.fulldayvalue + " HH:mm") },
+                            { "name": "timezone", value: zone }
+                           ];
                 var d;
                 if (option.quickUpdateHandler && $.isFunction(option.quickUpdateHandler)) {
                     option.quickUpdateHandler.call(this, param);
@@ -1745,10 +1745,10 @@
                     }
                     var zone = new Date().getTimezoneOffset() / 60 * -1;
                     var param = [{ "name": "CalendarTitle", value: what },
-						{ "name": "CalendarStartTime", value: datestart },
-						{ "name": "CalendarEndTime", value: dateend },
-						{ "name": "IsAllDayEvent", value: allday },
-						{ "name": "timezone", value: zone}];
+                        { "name": "CalendarStartTime", value: datestart },
+                        { "name": "CalendarEndTime", value: dateend },
+                        { "name": "IsAllDayEvent", value: allday },
+                        { "name": "timezone", value: zone}];
 
                     if (option.extParam) {
                         for (var pi = 0; pi < option.extParam.length; pi++) {
@@ -1890,10 +1890,10 @@
                     else if (d2 < 0) {
                         i = sl;
                     }
-					else if(d1==d2)
-					{
-						i=sl;
-					}
+                    else if(d1==d2)
+                    {
+                        i=sl;
+                    }
                     else {
                         for (var j = sl - 1; j >= 0; j--) {
                             if (option.eventItems[j][2] < s) {
@@ -1953,10 +1953,10 @@
 
                 }
             }
-			/*
+            /*
             else if (_viewType == "month") {
             }
-			*/
+            */
         }
         function returnfalse() {
             return false;
@@ -2025,12 +2025,12 @@
                 if (option.readonly == false) {
                     $("#mvEventContainer").mousedown(function(e) { dragStart.call(this, "m1", e); return false; });
                 }
-				else
-				{
-					 $("#mvEventContainer span.monthdayshow").each(function(e){
-						$(this).click(function(e2){    weekormonthtoday.call($(this).parent()[0], e2); });
-					 });
-				}
+                else
+                {
+                     $("#mvEventContainer span.monthdayshow").each(function(e){
+                        $(this).click(function(e2){    weekormonthtoday.call($(this).parent()[0], e2); });
+                     });
+                }
             }
 
         }
@@ -2045,7 +2045,7 @@
             var source = e.srcElement || e.target;
             realsedragevent();
             switch (type) {
-                case "dw1": //周日视图的	快速新增事件 单日
+                case "dw1": //周日视图的    快速新增事件 单日
                     _dragdata = { type: 1, target: obj, sx: e.pageX, sy: e.pageY };
                     break;
                 case "dw2": //周日视图的快速新增事件 全天跨天
@@ -2192,8 +2192,8 @@
         function dragMove(e) {
             if (_dragdata) {
                 if (e.pageX < 0 || e.pageY < 0
-					|| e.pageX > document.documentElement.clientWidth
-					|| e.pageY >= document.documentElement.clientHeight) {
+                    || e.pageX > document.documentElement.clientWidth
+                    || e.pageY >= document.documentElement.clientHeight) {
                     dragEnd(e);
                     return false;
                 }
@@ -2627,8 +2627,8 @@
             cpwrap.css({ left: x, top: y });
         }
         $(document)
-		.mousemove(dragMove)
-		.mouseup(dragEnd);
+        .mousemove(dragMove)
+        .mouseup(dragEnd);
         //.mouseout(dragEnd); //移出页面则拖动事件停止
 
         var c = {
@@ -2747,3 +2747,5 @@
         }
     };
 })(jQuery);
+
+// ex: tabstop=4 expandtab
