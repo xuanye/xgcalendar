@@ -719,16 +719,16 @@
             attendsshow = (event[10] != undefined && event[10] != "") ? event[10] : "";
             var ret = [];
             if (event[4] == 1) {
-                ret.push("[" + i18n.xgcalendar.allday_event + "]", $.browser.mozilla ? "" : "\r\n");
+                ret.push("[" + i18n.xgcalendar.allday_event + "]", "\r\n");
             }
             else {
                 if (event[5] == 1) {
-                    ret.push("[" + i18n.xgcalendar.repeat_event + "]", $.browser.mozilla ? "" : "\r\n");
+                    ret.push("[" + i18n.xgcalendar.repeat_event + "]", "\r\n");
                 }
             }
-            ret.push(i18n.xgcalendar.time + ":", timeshow, $.browser.mozilla ? "" : "\r\n", i18n.xgcalendar.event + ":", eventshow, $.browser.mozilla ? "" : "\r\n", i18n.xgcalendar.location + ":", locationshow);
+            ret.push(i18n.xgcalendar.time + ":", timeshow, "\r\n", i18n.xgcalendar.event + ":", eventshow, "\r\n", i18n.xgcalendar.location + ":", locationshow);
             if (attendsshow != "") {
-                ret.push($.browser.mozilla ? "" : "\r\n", i18n.xgcalendar.participant + ":", attendsshow);
+                ret.push("\r\n", i18n.xgcalendar.participant + ":", attendsshow);
             }
             return ret.join("");
         }
