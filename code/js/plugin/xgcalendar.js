@@ -1238,7 +1238,7 @@
                     for (var i = 0; i < sl; i++) {
                         if (option.eventItems[i][2] >= s && sI < 0) {
                             sI = i;
-                            continue;
+                            //continue;
                         }
                         if (option.eventItems[i][2] > e) {
                             eI = i;
