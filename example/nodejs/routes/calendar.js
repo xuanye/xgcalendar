@@ -45,7 +45,6 @@ exports.query = function(req,res) {
         ret.start       = util.format("\/Date(%d)\/",dataformart.start.getTime());
         ret.end         = util.format("\/Date(%d)\/",dataformart.end.getTime());
         ret.error       = null;
-        ret.issort      = true;      
         calendardao.QueryCalendar(qstart,qend,'demo',zonediff,function(dbdata){
            ret.events = [];
            for(var i=0,l=dbdata.length;i<l;i++)

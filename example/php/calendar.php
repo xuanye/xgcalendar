@@ -191,12 +191,11 @@ function GetCalendarsByRange()
 		$qstart = $dataformat['start_date'] +$zonediff*3600;
 		$qend = $dataformat['end_date'] +$zonediff*3600;		
 		//查询数据库 GetClientIP();
-		// {"start":start,"end":end,"error":error,"issort":issort,"events":jsonlist}
+		// {"start":start,"end":end,"error":error,"events":jsonlist}
 		$ret["start"] = TimestampToJsonTime($dataformat['start_date']);
 		$ret["end"] = TimestampToJsonTime( $dataformat['end_date']);
 		
 		$ret["error"] =NUll;
-		$ret["issort"] =TRUE;
 		//print_r($ret);	
 		$ret["events"] = DbQueryCalendars(date("Y-m-d H:i:s",$qstart),date("Y-m-d H:i:s",$qend),GetClientIP(),$zonediff);	
 		
