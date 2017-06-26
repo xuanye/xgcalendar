@@ -1130,7 +1130,7 @@
                             }
                         }
                         else {
-                            responseData(data, data.start, data.end);
+                            responseData(data);
                             pushER(data.start, data.end);
                         }
                         if (option.onAfterRequestData && $.isFunction(option.onAfterRequestData)) {
@@ -1169,90 +1169,37 @@
                 alert("url" + i18n.xgcalendar.i_undefined);
             }
         }
-        function responseData(data, start, end) {
-            var events;
-            if (data.issort == false) {
-                if (data.events && data.events.length > 0) {
-                    events = data.sort(function(l, r) { return l[2] > r[2] ? -1 : 1; });
-                }
-                else {
-                    events = [];
-                }
-            }
-            else {
-                events = data.events;
-            }
-            ConcatEvents(events, start, end);
+        function responseData(data) {
+            ConcatEvents(data.events);
             render();
-
         }
-        function clearrepeat(events, start, end) {
-            var jl = events.length;
-            if (jl > 0) {
-                var es = events[0][2];
-                var el = events[jl - 1][2];
-                for (var i = 0, l = option.eventItems.length; i < l; i++) {
 
-                    if (option.eventItems[i][2] > el || jl == 0) {
-                        break;
-                    }
-                    if (option.eventItems[i][2] >= es) {
-                        for (var j = 0; j < jl; j++) {
-                            if (option.eventItems[i][0] == events[j][0] && option.eventItems[i][2] < start) {
-                                events.splice(j, 1); //重复了移除
-                                jl--;
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        function ConcatEvents(events, start, end) {
-            if (!events) {
+        function ConcatEvents(events) {
+            if (!events)
                 events = [];
-            }
-            if (events) {
-                if (option.eventItems.length == 0) {
-                    option.eventItems = events;
-                }
-                else {
-                    //清理重复
-                    clearrepeat(events, start, end);
-                    var l = events.length;
-                    var sl = option.eventItems.length;
-                    var sI = -1;
-                    var eI = sl;
-                    var s = start;
-                    var e = end;
-                    if (option.eventItems[0][2] > e) // 第一个的开始时间都要大于请求的最后一个的开始时间
-                    {
-                        option.eventItems = events.concat(option.eventItems);
-                        return;
-                    }
-                    if (option.eventItems[sl - 1][2] < s) // 最后一个的开始时间都要小于请求的第一个的开始时间
-                    {
-                        option.eventItems = option.eventItems.concat(events);
-                        return;
-                    }
-                    for (var i = 0; i < sl; i++) {
-                        if (option.eventItems[i][2] >= s && sI < 0) {
-                            sI = i;
-                            //continue;
-                        }
-                        if (option.eventItems[i][2] > e) {
-                            eI = i;
-                            break;
-                        }
-                    }
 
-                    var e1 = sI <= 0 ? [] : option.eventItems.slice(0, sI);
-                    var e2 = eI == sl ? [] : option.eventItems.slice(eI);
-                    option.eventItems = [].concat(e1, events, e2);
-                    events = e1 = e2 = null;
-                }
+            events = [].concat(option.eventItems, events);
+
+            // sort by start date, then by event id
+            events.sort(function(l, r) {
+                if (l[2] < r[2])
+                    return -1;
+                if (l[2] > r[2])
+                    return 1;
+                // here l[2] == r[2]
+                return l[0] < r[0] ? -1 : 1;
+            });
+
+            // remove duplicates
+            for (i=0; i<events.length-1; ) {
+                if (events[i][0] == events[i+1][0])
+                    events.splice(i+1, 1);
+                else
+                    i++;
             }
+            option.eventItems = events;
         }
+
         //region 工具函数开始 {
         function weekormonthtoday(e) {
             var th = $(this);
