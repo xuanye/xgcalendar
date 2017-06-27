@@ -64,8 +64,8 @@ def convert_callist_to_strlist(callist,zonediff):
                         ])
     return strlist;
 #----------------------------------------------------------------------
-def build_json_calendar_viewdata(start,end,events,issort=True,error=None,zonediff=8):
+def build_json_calendar_viewdata(start,end,events,error=None,zonediff=8):
     """创建日程视图的json对象"""
     jsonlist =convert_callist_to_strlist(events,zonediff) 
-    return {"start":start,"end":end,"error":error,"issort":issort,"events":jsonlist}
+    return {"start":start,"end":end,"error":error,"events":jsonlist}
 

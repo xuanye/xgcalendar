@@ -124,10 +124,9 @@ xgcalendar
  
 **请求返回** 
 
->{"events":[],"issort":true,"start":"\/Date(1261353600000)\/","end":"\/Date(1261958399000)\/","error":null}
+>{"events":[],"start":"\/Date(1261353600000)\/","end":"\/Date(1261958399000)\/","error":null}
 
 `events`的结构同参数`eventItems`的结构，
-`issort`是否已在服务端排序（请在服务端做好排序），
 `start`和`end`是本次请求的开始时间和结束时间,这里是date的json表示法
 `error`是业务异常对象，可在服务端生成，结构为：`{ErrorCode:””,ErrorMsg:””}` 可在`onRequestDataError`中捕获，并做友好的提示。
 

@@ -11,15 +11,14 @@ namespace AzureCalendarMvcWeb.Models
             events = eventList;
             start = startDate;
             end = endDate;
-            issort = true;
         }
 
         public JsonCalendarViewData(List<object[]> eventList, DateTime startDate, DateTime endDate, bool isSort)
         {
+            /* obsolete function */
             start = startDate;
             end = endDate;
             events = eventList;
-            issort = isSort;
         }
         public JsonCalendarViewData(JsonError jsonError)
         {
@@ -28,6 +27,7 @@ namespace AzureCalendarMvcWeb.Models
         public List<object[]> events { get; private set; }
         public bool issort
         {
+            /* obsolete */
             get;
             private set;
         }
