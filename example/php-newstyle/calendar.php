@@ -288,7 +288,7 @@ function DbQueryCalendars($qstart,$qend,$userId,$zonediff)
 {
 	$db = db_connect();	
 	
-	$result = $db->query("SELECT * FROM calendar where StartTime<'{$qend}' and EndTime>'{$qstart}' and UPAccount='{$userId}' order by StartTime,EndTime");		
+	$result = $db->query("SELECT * FROM calendar where StartTime <= '{$qend}' and EndTime => '{$qstart}' and UPAccount='{$userId}' order by StartTime,EndTime");		
 
 	$ret =array();	
 
