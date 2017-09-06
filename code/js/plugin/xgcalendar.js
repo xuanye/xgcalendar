@@ -1905,7 +1905,7 @@
                     var ph = $dvtec[0].scrollHeight;
                     if (sh < 0) sh = 0;
                     if (sh > ph - ch) sh = ph - ch - 10 * (23 - h);
-                    $dvtec[0].scrollTop = sh;
+                    // $dvtec[0].scrollTop = sh;// TODO 滚动的坏处是看不到了全日活动的，需要上滚才可以看到
 
                 }
                 else {
